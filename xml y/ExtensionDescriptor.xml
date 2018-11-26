@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root usage="ExtensionDescriptor" chip="Woodpecker8" chiptype="5708" bustype ="I2C" libname ="O2Micro.Cobra.Woodpecker8" ProjectCode="OCEWDP8Y" AppVersion="2.00.03" OCEVersion="1.0.2.0">
+  <Part Name="DBConfig">
+    <ChipName>Woodpecker8</ChipName>
+    <ChipVersion>A0</ChipVersion>
+    <UserType>Y</UserType>
+    <Date>20181122</Date>
+    <HasCom>true</HasCom>
+    <HasAMT>true</HasAMT>
+  </Part>
+  <Part Name = "MainBtnList">
+    <Button Label = "Expert"	DBModuleName="Expert"        Name = "Exper"         PanelName ="O2Micro.Cobra.ExperPanel"/>
+    <Button Label = "EfuseConfig" DBModuleName="EfuseConfig"   Name ="DeviceConfig"   PanelName ="O2Micro.Cobra.DeviceConfigurationPanel">
+      <Layout Name ="layout" bOrder ="true">
+        <Button Name ="EraseBtn" IsEnable ="False" Visibility="Collapsed"/>
+      </Layout>
+    </Button>
+    <Button Label = "OPConfig"	DBModuleName="OPConfig"     Name ="DeviceConfig"   PanelName ="O2Micro.Cobra.DeviceConfigurationPanel">
+      <Layout Name ="layout" bOrder ="true">
+        <Button Name ="EraseBtn" IsEnable ="False" Visibility="Collapsed"/>
+      </Layout>
+    </Button>
+    <Button Label = "MPTConfig"    DBModuleName="MPTConfig"        Name = "TestItems"         PanelName ="O2Micro.Cobra.TestItemsPanel">
+      <Process>
+        <Item SubTaskID="9">Chip Frozen Check</Item>
+        <Item SubTaskID="10">Chip Dirty Check</Item>
+        <Item SubTaskID="11" RadioOption="0">Download With Power Control</Item>
+        <Item SubTaskID="12" RadioOption="1">Download</Item>
+        <Item SubTaskID="13">Read Back Check</Item>
+      </Process>
+    </Button>
+    <Button Label = "Production"    DBModuleName="Production"        Name = "Production"         PanelName ="O2Micro.Cobra.ProductionPanel"></Button>
+  </Part>
+</Root>
