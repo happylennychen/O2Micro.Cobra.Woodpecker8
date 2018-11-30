@@ -449,9 +449,9 @@ namespace O2Micro.Cobra.Woodpecker8
                     OpReglist.Add(baddress);
                 }
             }
+            OpReglist = OpReglist.Distinct().ToList();
             byte offset = 0;
 
-            OpReglist = OpReglist.Distinct().ToList();
             if (msg.gm.sflname == "OPConfig")
             {
                 if (msg.task_parameterlist.parameterlist.Count < ElementDefine.EF_TOTAL_PARAMS)
@@ -476,28 +476,33 @@ namespace O2Micro.Cobra.Woodpecker8
             }
             else if (msg.gm.sflname == "EfuseConfig")
             {
+                if (msg.funName == null)
+                {
+                    return LibErrorCode.IDS_ERR_SUCCESSFUL;
+                }
+                else if (!msg.funName.Equals("Read"))    //Issue1369
+                {
+                    return LibErrorCode.IDS_ERR_SUCCESSFUL;
+                }
+
+                msg.funName = "";
                 if (msg.task_parameterlist.parameterlist.Count < ElementDefine.EF_TOTAL_PARAMS)
                     return ElementDefine.IDS_ERR_DEM_ONE_PARAM_DISABLE;
                 ret = SetWorkMode(ElementDefine.WORK_MODE.PROGRAM);
                 if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                     return ret;
+                msg.gm.message = "Please provide 7.2V power supply to Tref pin, and limit its current to 80mA.";
+                msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
+                if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
                 if (isEFBank2Empty() == true)
                 {
-                    msg.gm.message = "Please provide 7.2V power supply to Tref pin, and limit it current to 80mA.";
-                    msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
-                    if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
-
                     offset = 0;
                     //System.Windows.Forms.MessageBox.Show("Reading bank1.");
                     msg.gm.message = "Reading bank1.";
                     msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                 }
-                else if (isEFBank2Empty() == false)
+                else
                 {
-                    msg.gm.message = "Please provide 7.2V power supply to Tref pin, and limit it current to 80mA.";
-                    msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
-                    if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
-
                     offset = 4;
                     //System.Windows.Forms.MessageBox.Show("Reading bank2.");
                     msg.gm.message = "Reading bank2.";
@@ -521,14 +526,17 @@ namespace O2Micro.Cobra.Woodpecker8
                     parent.m_OpRegImg[(byte)(badd)].err = ret;
                     parent.m_OpRegImg[(byte)(badd)].val = (UInt16)bdata;
                 }
-                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                        return ret;
             }
+            if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                return ret;
             if (msg.gm.sflname == "EfuseConfig")
             {
                 msg.gm.message = "Please remove 7.2V power supply from Tref pin.";
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
-                if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
+                if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;                
+				ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
+                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                    return ret;
             }
             return ret;
         }
@@ -536,7 +544,8 @@ namespace O2Micro.Cobra.Woodpecker8
         public UInt32 SafetyCheck(List<byte> OpReglist)
         {
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-            byte tmp = 0;
+            /*byte tmp = 0;
+            
             if (OpReglist.Contains((byte)ElementDefine.EF_USR_BANK1_TOP) && OpReglist.Contains((byte)ElementDefine.EF_USR_BANK2_TOP))
             {
             }
@@ -558,9 +567,11 @@ namespace O2Micro.Cobra.Woodpecker8
             }
             else
                 return ret;
-
+            */
             if ((parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].val & 0x80) == 0x80
-                && (parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val & 0x80) == 0x00)
+                && parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].err == LibErrorCode.IDS_ERR_SUCCESSFUL
+                && (parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val & 0x80) == 0x00
+                && parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].err == LibErrorCode.IDS_ERR_SUCCESSFUL)
             {
                 ret = ElementDefine.IDS_ERR_DEM_BLOCK;
             }
@@ -571,9 +582,10 @@ namespace O2Micro.Cobra.Woodpecker8
         {
             Reg reg = null;
             byte baddress = 0;
-            bool skip = false;
+            byte bdata = 0;
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-
+            byte operatingbank = 1;
+            bool isConfigEmpty = true;
             List<byte> OpReglist = new List<byte>();
 
             ParamContainer demparameterlist = msg.task_parameterlist;
@@ -591,6 +603,8 @@ namespace O2Micro.Cobra.Woodpecker8
                     OpReglist.Add(baddress);
                 }
             }
+            OpReglist = OpReglist.Distinct().ToList();
+
             ret = SafetyCheck(OpReglist);
             if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                 return ret;
@@ -639,49 +653,146 @@ namespace O2Micro.Cobra.Woodpecker8
                 if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                     return ret;
 
+                msg.gm.message = "Please provide 7.2V power supply to Tref pin, and limit its current to 80mA.";
+                msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
+                if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
+
                 if (isEFConfigEmpty() == false)
                 {
+                    isConfigEmpty = false;
                     OpReglist.Remove(0x16);
                     //System.Windows.Forms.MessageBox.Show("Config register 0x16 is frozen. Skip to program it.");
                     msg.gm.message = "Register 0x16 is frozen. Skip to program it.";
                     msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
-                    skip = true;
                 }
                 else
                 {
+                    isConfigEmpty = true;
                     parent.m_OpRegImg[0x16].val |= 0x80;
                 }
 
                 if (isEFBank1Empty() == true)
                 {
-                    msg.gm.message = "Please provide 7.2V power supply to Tref pin, and limit it current to 80mA.";
-                    msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
-                    if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
-
                     offset = 0;
                     //System.Windows.Forms.MessageBox.Show("Writing bank1.");
                     msg.gm.message = "Writing bank1.";
                     msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
-                    parent.m_OpRegImg[0x1b].val |= 0x80;
+                    operatingbank = 1;
                 }
                 else if (isEFBank2Empty() == true)
                 {
-                    msg.gm.message = "Please provide 7.2V power supply to Tref pin, and limit it current to 80mA.";
-                    msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
-                    if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
-
                     offset = 4;
                     //System.Windows.Forms.MessageBox.Show("Bank1 is frozen, writing bank2.");
                     msg.gm.message = "Bank1 is frozen, writing bank2.";
                     msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
-                    parent.m_OpRegImg[0x1b].val |= 0x80;    //m_OpRegImg 0x1c~0x1f are not used
+                    operatingbank = 2;
                 }
                 else
                 {
                     //System.Windows.Forms.MessageBox.Show("Bank1 and bank2 are frozen, stop writing.");
                     //return 0;
+                    msg.gm.message = "Please remove 7.2V power supply from Tref pin.";
+                    msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
+                    if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
+
+                    ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
                     return ElementDefine.IDS_ERR_DEM_FROZEN;
                 }
+
+                #region Read
+                foreach (byte badd in OpReglist)
+                {
+                    if (badd == 0x16)
+                    {
+                        ret = ReadByte(badd, ref bdata);
+                        parent.m_OpRegImg[badd].err = ret;
+                        parent.m_OpRegImg[badd].val = (UInt16)bdata;
+                    }
+                    else
+                    {
+                        ret = ReadByte((byte)(badd + offset), ref bdata);
+                        parent.m_OpRegImg[(byte)(badd)].err = ret;
+                        parent.m_OpRegImg[(byte)(badd)].val = (UInt16)bdata;
+                    }
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+                }
+                #endregion
+
+                #region Phy2Hex
+                List<Parameter> ParamList = new List<Parameter>();
+                foreach (Parameter p in demparameterlist.parameterlist)
+                {
+                    if ((p.guid & ElementDefine.SectionMask) == ElementDefine.VirtualElement)    //略过虚拟参数
+                        continue;
+                    if (p == null) break;
+                    ParamList.Add(p);
+                }
+
+                Parameter param = null;
+                if (ParamList.Count != 0)
+                {
+                    for (int i = 0; i < ParamList.Count; i++)
+                    {
+                        param = (Parameter)ParamList[i];
+                        if (param == null) continue;
+
+                        m_parent.Physical2Hex(ref param);
+                    }
+                }
+                #endregion
+
+                if (operatingbank == 1)
+                    parent.m_OpRegImg[0x1b].val |= 0x80;
+                else if (operatingbank == 2)
+                    parent.m_OpRegImg[0x1b].val |= 0x80;    //m_OpRegImg 0x1c~0x1f are not used
+
+                if(isConfigEmpty)
+                    parent.m_OpRegImg[0x16].val |= 0x80;
+
+                #region Write
+                foreach (byte badd in OpReglist)
+                {
+                    if (badd == 0x16)
+                    {
+                        ret = WriteByte(badd, (byte)parent.m_OpRegImg[badd].val);
+                    }
+                    else
+                        ret = WriteByte((byte)(badd + offset), (byte)parent.m_OpRegImg[badd].val);
+                    parent.m_OpRegImg[badd].err = ret;
+                }
+                #endregion
+
+                #region Read
+                foreach (byte badd in OpReglist)
+                {
+                    if (badd == 0x16)
+                    {
+                        ret = ReadByte(badd, ref bdata);
+                        parent.m_OpRegImg[badd].err = ret;
+                        parent.m_OpRegImg[badd].val = (UInt16)bdata;
+                    }
+                    else
+                    {
+                        ret = ReadByte((byte)(badd + offset), ref bdata);
+                        parent.m_OpRegImg[(byte)(badd)].err = ret;
+                        parent.m_OpRegImg[(byte)(badd)].val = (UInt16)bdata;
+                    }
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+                }
+                #endregion
+
+                msg.gm.message = "Please remove 7.2V power supply from Tref pin.";
+                msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
+                if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
+
+                ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
+                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                    return ret;
+                return ret;
             }
             else if (msg.gm.sflname == "Expert")
             {
@@ -698,18 +809,11 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 if (badd == 0x16 || badd == 0x26)
                 {
-                    if (!skip)
-                        ret = WriteByte(badd, (byte)parent.m_OpRegImg[badd].val);
+                    ret = WriteByte(badd, (byte)parent.m_OpRegImg[badd].val);
                 }
                 else
                     ret = WriteByte((byte)(badd + offset), (byte)parent.m_OpRegImg[badd].val);
                 parent.m_OpRegImg[badd].err = ret;
-            }
-            if (msg.gm.sflname == "EfuseConfig")
-            {
-                msg.gm.message = "Please remove 7.2V power supply from Tref pin.";
-                msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
-                if (!msg.controlmsg.bcancel) return LibErrorCode.IDS_ERR_DEM_USER_QUIT;
             }
             return ret;
         }
@@ -761,6 +865,17 @@ namespace O2Micro.Cobra.Woodpecker8
 
         public UInt32 ConvertPhysicalToHex(ref TASKMessage msg)
         {
+            if (msg.gm.sflname == "EfuseConfig")
+            {
+                if (msg.funName == null)
+                {
+                    return LibErrorCode.IDS_ERR_SUCCESSFUL;
+                }
+                else if (!msg.funName.Equals("Read"))    //Issue1369
+                {
+                    return LibErrorCode.IDS_ERR_SUCCESSFUL;
+                }
+            }
             Parameter param = null;
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
 
@@ -1004,6 +1119,7 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 //System.Windows.Forms.MessageBox.Show("Config register 0x16 is frozen. Skip to program it.");
                 msg.gm.message = "Register 0x16 is frozen. Skip to program it.";
+                msg.gm.level = 0;
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
             }
             else
@@ -1037,6 +1153,7 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 //System.Windows.Forms.MessageBox.Show("Writing bank1.");
                 msg.gm.message = "Writing bank1.";
+                msg.gm.level = 0;
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                 WritingBank1Or2 = 0;
             }
@@ -1045,6 +1162,7 @@ namespace O2Micro.Cobra.Woodpecker8
                 offset = 4;
                 //System.Windows.Forms.MessageBox.Show("Bank1 is frozen, writing bank2.");
                 msg.gm.message = "Bank1 is frozen, writing bank2.";
+                msg.gm.level = 0;
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                 WritingBank1Or2 = 1;
             }
@@ -1103,6 +1221,7 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 //System.Windows.Forms.MessageBox.Show("Config register 0x16 is frozen. Skip to program it.");
                 msg.gm.message = "Register 0x16 is frozen. Skip to program it.";
+                msg.gm.level = 0;
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
             }
             else
@@ -1136,6 +1255,7 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 //System.Windows.Forms.MessageBox.Show("Writing bank1.");
                 msg.gm.message = "Writing bank1.";
+                msg.gm.level = 0;
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                 WritingBank1Or2 = 0;
             }
@@ -1144,6 +1264,7 @@ namespace O2Micro.Cobra.Woodpecker8
                 offset = 4;
                 //System.Windows.Forms.MessageBox.Show("Bank1 is frozen, writing bank2.");
                 msg.gm.message = "Bank1 is frozen, writing bank2.";
+                msg.gm.level = 0;
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                 WritingBank1Or2 = 1;
             }

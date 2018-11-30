@@ -155,7 +155,7 @@ namespace O2Micro.Cobra.Woodpecker8
 
             m_dem_bm.Init(this);
             m_dem_dm.Init(this);
-            LibInfor.AssemblyRegister(Assembly.GetExecutingAssembly(), ASSEMBLY_TYPE.DEM); 
+            LibInfor.AssemblyRegister(Assembly.GetExecutingAssembly(), ASSEMBLY_TYPE.OCE); 
             LibErrorCode.UpdateDynamicalLibError(ref m_dynamicErrorLib_dic);
 
         }
