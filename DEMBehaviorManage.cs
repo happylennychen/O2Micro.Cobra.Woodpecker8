@@ -452,7 +452,7 @@ namespace O2Micro.Cobra.Woodpecker8
             OpReglist = OpReglist.Distinct().ToList();
             byte offset = 0;
 
-            if (msg.gm.sflname == "OPConfig")
+            if (msg.gm.sflname == "OPConfig" || msg.gm.sflname.Equals("Register Config"))
             {
                 if (msg.task_parameterlist.parameterlist.Count < ElementDefine.EF_TOTAL_PARAMS)
                     return ElementDefine.IDS_ERR_DEM_ONE_PARAM_DISABLE;
@@ -474,7 +474,7 @@ namespace O2Micro.Cobra.Woodpecker8
                     msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                 }
             }
-            else if (msg.gm.sflname == "EfuseConfig")
+            else if (msg.gm.sflname == "EfuseConfig" || msg.gm.sflname.Equals("EFUSE Config"))
             {
                 if (msg.funName == null)
                 {
@@ -509,7 +509,7 @@ namespace O2Micro.Cobra.Woodpecker8
                     msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                 }
             }
-            else if (msg.gm.sflname == "Production")
+            else if (msg.gm.sflname == "Production" || msg.gm.sflname == "Mass Production")
                 SetWorkMode(ElementDefine.WORK_MODE.PROGRAM);
 
             foreach (byte badd in OpReglist)
@@ -529,7 +529,7 @@ namespace O2Micro.Cobra.Woodpecker8
             }
             if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                 return ret;
-            if (msg.gm.sflname == "EfuseConfig")
+            if (msg.gm.sflname == "EfuseConfig" || msg.gm.sflname.Equals("EFUSE Config"))
             {
                 msg.gm.message = "Please remove 7.2V power supply from Tref pin.";
                 msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_SELECT;
@@ -610,7 +610,7 @@ namespace O2Micro.Cobra.Woodpecker8
                 return ret;
 
             byte offset = 0;
-            if (msg.gm.sflname == "OPConfig")
+            if (msg.gm.sflname == "OPConfig" || msg.gm.sflname.Equals("Register Config"))
             {
                 if (msg.task_parameterlist.parameterlist.Count < ElementDefine.EF_TOTAL_PARAMS)
                     return ElementDefine.IDS_ERR_DEM_ONE_PARAM_DISABLE;
@@ -645,7 +645,7 @@ namespace O2Micro.Cobra.Woodpecker8
                     return ElementDefine.IDS_ERR_DEM_FROZEN;
                 }
             }
-            else if (msg.gm.sflname == "EfuseConfig")
+            else if (msg.gm.sflname == "EfuseConfig" || msg.gm.sflname.Equals("EFUSE Config"))
             {
                 if (msg.task_parameterlist.parameterlist.Count < ElementDefine.EF_TOTAL_PARAMS)
                     return ElementDefine.IDS_ERR_DEM_ONE_PARAM_DISABLE;
@@ -865,7 +865,7 @@ namespace O2Micro.Cobra.Woodpecker8
 
         public UInt32 ConvertPhysicalToHex(ref TASKMessage msg)
         {
-            if (msg.gm.sflname == "EfuseConfig")
+            if (msg.gm.sflname == "EfuseConfig" || msg.gm.sflname.Equals("EFUSE Config"))
             {
                 if (msg.funName == null)
                 {

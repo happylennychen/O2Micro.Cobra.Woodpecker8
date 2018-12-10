@@ -335,7 +335,7 @@
         <Item>Push-pull output</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>DSGPAD_TYPE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -369,7 +369,7 @@
         <Item>DSG outputs Hi-Z or High when no events (i.e. outputs Low when events occur)</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>DSGPAD_ACTIVE_O</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -403,7 +403,7 @@
         <Item>Push-pull output</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>CHGPAD_TYPE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -437,7 +437,7 @@
         <Item>CHG outputs Hi-Z or High when no events (i.e. outputs Low when events occur)</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>CHGPAD_ACTIVE_O</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -471,7 +471,7 @@
         <Item>Disable</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>UVP_DIS</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -511,7 +511,7 @@
         <Item>Don not output the 20Hz square wave on SDA when DOT occurs</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>DOT_ON_SDA_DIS</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -545,7 +545,7 @@
         <Item>Disable a same current flow out from TREF and TS when SDA is high, so TREF and TS are in Hi-Z output</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>THM_SHARE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -600,7 +600,7 @@
         <Item>8 scan-cycle</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Tot-ut-dly</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -634,7 +634,7 @@
         <Item>85 degree</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>DOT_TH</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -671,7 +671,7 @@
         <Item>55 degree</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>COT_TH</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -705,7 +705,7 @@
         <Item>Need software to clear the event flags so as to release the protections</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>SW_RELEASE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -741,7 +741,7 @@
         <Item>8 cells</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Ncell</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -771,7 +771,7 @@
         </Location>
       </LocationList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Vovp</NickName>
           <Catalog></Catalog>
           <DefValue>4000</DefValue>
@@ -805,7 +805,7 @@
         <Item>Disable CUT protection</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>CUT_DIS</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -839,7 +839,7 @@
         <Item>Initiate protection on CHG when UV occurs</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>UV_ON_CHGPAD</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -887,7 +887,7 @@
         <Item>3000mV</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Vuvp</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -927,7 +927,7 @@
         <Item>800mV</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Vuvr-hys</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -961,7 +961,7 @@
         <Item>select OVP range 3.5V~4.0V for Li_ion Phosphate type</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>BAT_TYPE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1000,7 +1000,7 @@
         <Item>8 scan-cycle</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Tovp</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1036,7 +1036,7 @@
         <Item>8 scan-cycle</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Tuvp</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1076,7 +1076,7 @@
         <Item>400mV</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <NickName>Vovr-hys</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1510,7 +1510,7 @@
           <Group>Woodpecker8</Group>
           <Description>DSGPAD_TYPE</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>DSGPAD_TYPE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1556,7 +1556,7 @@
           <Group>Woodpecker8</Group>
           <Description>DSGPAD_ACTIVE_O</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>DSGPAD_ACTIVE_O</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1602,7 +1602,7 @@
           <Group>Woodpecker8</Group>
           <Description>CHGPAD_TYPE</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>CHGPAD_TYPE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1648,7 +1648,7 @@
           <Group>Woodpecker8</Group>
           <Description>CHGPAD_ACTIVE_O</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>CHGPAD_ACTIVE_O</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1694,7 +1694,7 @@
           <Group>Woodpecker8</Group>
           <Description>UVP_DIS</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>UVP_DIS</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1746,7 +1746,7 @@
           <Group>Woodpecker8</Group>
           <Description>DOT_ON_SDA_DIS</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>DOT_ON_SDA_DIS</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1792,7 +1792,7 @@
           <Group>Woodpecker8</Group>
           <Description>THM_SHARE</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>THM_SHARE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1871,7 +1871,7 @@
           <Group>Woodpecker8</Group>
           <Description>Tot-ut-dly</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Tot-ut-dly</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1917,7 +1917,7 @@
           <Group>Woodpecker8</Group>
           <Description>DOT_TH</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>DOT_TH</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -1966,7 +1966,7 @@
           <Group>Woodpecker8</Group>
           <Description>COT_TH</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>COT_TH</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2012,7 +2012,7 @@
           <Group>Woodpecker8</Group>
           <Description>SW_RELEASE</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>SW_RELEASE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2060,7 +2060,7 @@
           <Group>Woodpecker8</Group>
           <Description>Ncell</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Ncell</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2102,7 +2102,7 @@
           <Group>Woodpecker8</Group>
           <Description>Vovp</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Vovp</NickName>
           <Catalog></Catalog>
           <DefValue>4000</DefValue>
@@ -2148,7 +2148,7 @@
           <Group>Woodpecker8</Group>
           <Description>CUT_DIS</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>CUT_DIS</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2194,7 +2194,7 @@
           <Group>Woodpecker8</Group>
           <Description>UV_ON_CHGPAD</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>UV_ON_CHGPAD</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2254,7 +2254,7 @@
           <Group>Woodpecker8</Group>
           <Description>Vuvp</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Vuvp</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2306,7 +2306,7 @@
           <Group>Woodpecker8</Group>
           <Description>Vuvr-hys</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Vuvr-hys</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2352,7 +2352,7 @@
           <Group>Woodpecker8</Group>
           <Description>BAT_TYPE</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>BAT_TYPE</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2403,7 +2403,7 @@
           <Group>Woodpecker8</Group>
           <Description>Tovp</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Tovp</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2451,7 +2451,7 @@
           <Group>Woodpecker8</Group>
           <Description>Tuvp</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Tuvp</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -2503,7 +2503,7 @@
           <Group>Woodpecker8</Group>
           <Description>Vovr-hys</Description>
         </SFL>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <NickName>Vovr-hys</NickName>
           <Catalog></Catalog>
           <DefValue>0</DefValue>
@@ -3685,7 +3685,7 @@
         <Item>Disable</Item>
       </ItemList>
       <Private>
-        <SFL Name="EfuseConfig">
+        <SFL Name="EFUSE Config">
           <Order>b</Order>
           <NickName>OT_UT_DIS</NickName>
           <Catalog></Catalog>
@@ -3720,7 +3720,7 @@
         <Item>Disable</Item>
       </ItemList>
       <Private>
-        <SFL Name="OPConfig">
+        <SFL Name="Register Config">
           <Order>b</Order>
           <NickName>OT_UT_DIS</NickName>
           <Catalog></Catalog>

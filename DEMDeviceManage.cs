@@ -193,9 +193,7 @@ namespace O2Micro.Cobra.Woodpecker8
 
         public UInt32 BlockMap(ref TASKMessage bgworker)
         {
-            if (bgworker.gm.sflname == "OPConfig")
                 return LibErrorCode.IDS_ERR_SUCCESSFUL;
-            return m_dem_bm.EpBlockRead();
         }
 
         public UInt32 Command(ref TASKMessage bgworker)
