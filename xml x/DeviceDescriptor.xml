@@ -337,7 +337,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>DSGPAD_TYPE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -371,7 +371,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>DSGPAD_ACTIVE_O</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -405,7 +405,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>CHGPAD_TYPE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -439,7 +439,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>CHGPAD_ACTIVE_O</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -473,7 +473,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>UVP_DIS</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -513,7 +513,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>DOT_ON_SDA_DIS</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -547,7 +547,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>THM_SHARE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -602,7 +602,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Tot-ut-dly</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -636,7 +636,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>DOT_TH</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -673,7 +673,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>COT_TH</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -707,7 +707,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>SW_RELEASE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -743,7 +743,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Ncell</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -773,7 +773,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Vovp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>4000</DefValue>
           <MinValue>4000</MinValue>
           <MaxValue>4500</MaxValue>
@@ -807,7 +807,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>CUT_DIS</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -841,7 +841,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>UV_ON_CHGPAD</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -889,7 +889,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Vuvp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>15</MaxValue>
@@ -929,7 +929,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Vuvr-hys</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>
@@ -963,7 +963,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>BAT_TYPE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1002,7 +1002,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Tovp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -1038,7 +1038,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Tuvp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -1078,7 +1078,7 @@
       <Private>
         <SFL Name="EFUSE Config">
           <NickName>Vovr-hys</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>
@@ -1512,7 +1512,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>DSGPAD_TYPE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1558,7 +1558,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>DSGPAD_ACTIVE_O</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1604,7 +1604,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>CHGPAD_TYPE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1650,7 +1650,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>CHGPAD_ACTIVE_O</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1696,7 +1696,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>UVP_DIS</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1748,7 +1748,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>DOT_ON_SDA_DIS</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1794,7 +1794,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>THM_SHARE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1873,7 +1873,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Tot-ut-dly</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -1919,7 +1919,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>DOT_TH</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1968,7 +1968,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>COT_TH</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2014,7 +2014,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>SW_RELEASE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2062,7 +2062,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Ncell</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -2104,7 +2104,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vovp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>4000</DefValue>
           <MinValue>4000</MinValue>
           <MaxValue>4500</MaxValue>
@@ -2150,7 +2150,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>CUT_DIS</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2196,7 +2196,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>UV_ON_CHGPAD</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2256,7 +2256,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vuvp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>15</MaxValue>
@@ -2308,7 +2308,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vuvr-hys</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>
@@ -2354,7 +2354,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>BAT_TYPE</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2405,7 +2405,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Tovp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -2453,7 +2453,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Tuvp</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -2505,7 +2505,7 @@
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vovr-hys</NickName>
-          <Catalog></Catalog>
+          <Catalog>Woodpecker8</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>

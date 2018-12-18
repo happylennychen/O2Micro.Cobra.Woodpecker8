@@ -4,23 +4,23 @@
     <ChipName>Woodpecker8</ChipName>
     <ChipVersion>A0</ChipVersion>
     <UserType>X</UserType>
-    <Date>20181210</Date>
+    <Date>20181214</Date>
     <HasCom>true</HasCom>
     <HasAMT>true</HasAMT>
   </Part>
   <Part Name = "MainBtnList">
-    <Button Label = "Expert"	DBModuleName="Expert"        Name = "Exper"         PanelName ="O2Micro.Cobra.ExperPanel"/>
-    <Button Label = "Register Config"	DBModuleName="OPConfig"  NoMapping="True"    Name ="DeviceConfig"   PanelName ="O2Micro.Cobra.DeviceConfigurationPanel">
+    <Button Label = "Expert"	Name = "Exper"         PanelName ="O2Micro.Cobra.ExperPanel"/>
+    <Button Label = "Register Config"	NoMapping="True"    Name ="DeviceConfig"   PanelName ="O2Micro.Cobra.DeviceConfigurationPanel">
       <Layout Name ="layout" bOrder ="true">
         <Button Name ="EraseBtn" IsEnable ="False" Visibility="Collapsed"/>
       </Layout>
     </Button>
-    <Button Label = "EFUSE Config" DBModuleName="EfuseConfig"   Name ="DeviceConfig"   PanelName ="O2Micro.Cobra.DeviceConfigurationPanel">
+    <Button Label = "EFUSE Config" Name ="DeviceConfig"   PanelName ="O2Micro.Cobra.DeviceConfigurationPanel">
       <Layout Name ="layout" bOrder ="true">
         <Button Name ="EraseBtn" IsEnable ="False" Visibility="Collapsed"/>
       </Layout>
     </Button>
-    <Button Label = "Mass Production" DBModuleName="Production"  Name = "Production" ShowVerify="False"  PanelName ="O2Micro.Cobra.ProductionPanel">
+    <Button Label = "Mass Production" DBModuleName="Production"  Name = "Production" ShowVerify="False" ShowConfig="True" ShowHEX="False"  PanelName ="O2Micro.Cobra.ProductionPanel">
       <Process>
         <Item SubTaskID="9">Chip Frozen Check</Item>
         <Item SubTaskID="10">Chip Dirty Check</Item>
@@ -28,6 +28,7 @@
         <Item SubTaskID="12" RadioOption="1">Download</Item>
         <Item SubTaskID="13">Read Back Check</Item>
       </Process>
+      <GetEfuseHexDataCommand>15</GetEfuseHexDataCommand>
     </Button>
   </Part>
 </Root>

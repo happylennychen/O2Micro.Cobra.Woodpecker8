@@ -66,11 +66,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="xml m\DeviceDescriptor.xml" />
+    <Content Include="xml m\ExtensionDescriptor.xml" />
     <Content Include="xml x\DeviceDescriptor.xml" />
     <Content Include="xml x\ExtensionDescriptor.xml" />
     <Content Include="xml y\DeviceDescriptor.xml" />
     <Content Include="xml y\ExtensionDescriptor.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
