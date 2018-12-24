@@ -71,7 +71,9 @@
     <Content Include="xml x\DeviceDescriptor.xml" />
     <Content Include="xml x\ExtensionDescriptor.xml" />
     <Content Include="xml y\DeviceDescriptor.xml" />
-    <Content Include="xml y\ExtensionDescriptor.xml" />
+    <Content Include="xml y\ExtensionDescriptor.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

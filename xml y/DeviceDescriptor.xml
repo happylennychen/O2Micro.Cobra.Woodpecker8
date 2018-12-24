@@ -1352,6 +1352,9 @@
           <Format>0</Format>
           <Description>OV protection threshold for each cell</Description>
           <Order>3</Order>
+          <Relations>
+            <Item>0x00031b04</Item>
+          </Relations>
         </SFL>
       </Private>
     </Element>
@@ -1504,6 +1507,9 @@
           <Format>0</Format>
           <Description>UV protection threshold for each cell</Description>
           <Order>7</Order>
+          <Relations>
+            <Item>0x00031a04</Item>
+          </Relations>
         </SFL>
       </Private>
     </Element>
@@ -1603,6 +1609,7 @@
           <Description>Battery type</Description>
           <Relations>
             <Item>0x00031900</Item>
+            <Item>0x00031b04</Item>
           </Relations>
           <Order>2</Order>
         </SFL>
@@ -1728,7 +1735,6 @@
         <Item>250mV</Item>
         <Item>300mV</Item>
         <Item>350mV</Item>
-        <Item>400mV</Item>
       </ItemList>
       <Private>
         <SFL Name="Expert">
@@ -2971,6 +2977,9 @@
           <Format>0</Format>
           <Description>OV protection threshold for each cell</Description>
           <Order>3</Order>
+          <Relations>
+            <Item>0x00032b04</Item>
+          </Relations>
         </SFL>
       </Private>
     </Element>
@@ -3123,6 +3132,9 @@
           <Format>0</Format>
           <Description>UV protection threshold for each cell</Description>
           <Order>7</Order>
+          <Relations>
+            <Item>0x00032a04</Item>
+          </Relations>
         </SFL>
       </Private>
     </Element>
@@ -3222,6 +3234,7 @@
           <Description>Battery type</Description>
           <Relations>
             <Item>0x00032900</Item>
+            <Item>0x00032b04</Item>
           </Relations>
           <Order>2</Order>
         </SFL>
@@ -3347,7 +3360,6 @@
         <Item>250mV</Item>
         <Item>300mV</Item>
         <Item>350mV</Item>
-        <Item>400mV</Item>
       </ItemList>
       <Private>
         <SFL Name="Expert">

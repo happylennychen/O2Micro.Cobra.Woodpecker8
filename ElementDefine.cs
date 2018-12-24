@@ -53,6 +53,9 @@ namespace O2Micro.Cobra.Woodpecker8
         internal const UInt32 E_BAT_TYPE = 0x00031a07;
         internal const UInt32 E_OVP_TH = 0x00031900;
         internal const UInt32 E_DOT_TH = 0x00031802;
+        internal const UInt32 E_OVR_HYS = 0x00031b04;
+        internal const UInt32 E_UVR_HYS = 0x00031a04;
+        internal const UInt32 E_UVP_TH = 0x00031a00;
         #endregion
 
         #region Operation参数GUID
@@ -61,6 +64,9 @@ namespace O2Micro.Cobra.Woodpecker8
         internal const UInt32 O_BAT_TYPE = 0x00032a07;
         internal const UInt32 O_OVP_TH = 0x00032900;
         internal const UInt32 O_DOT_TH = 0x00032802;
+        internal const UInt32 O_OVR_HYS = 0x00032b04;
+        internal const UInt32 O_UVR_HYS = 0x00032a04;
+        internal const UInt32 O_UVP_TH = 0x00032a00;
 
         #endregion
 

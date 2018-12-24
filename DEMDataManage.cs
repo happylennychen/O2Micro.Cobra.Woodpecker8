@@ -143,12 +143,116 @@ namespace O2Micro.Cobra.Woodpecker8
                 pOVP_TH.offset = 3900;
                 pOVP_TH.dbPhyMin = 4000;
                 pOVP_TH.dbPhyMax = 4500;
+                if (pOVP_TH.phydata < 4000)
+                    pOVP_TH.phydata = 4000;
             }
             else if (pBAT_TYPE.phydata == 1)
             {
                 pOVP_TH.offset = 3400;
                 pOVP_TH.dbPhyMin = 3500;
                 pOVP_TH.dbPhyMax = 4000;
+                if (pOVP_TH.phydata > 4000)
+                    pOVP_TH.phydata = 4000;
+            }
+        }
+        private void UpdateOVR(ref Parameter pOVR)
+        {
+            Parameter pBAT_TYPE = new Parameter();
+            Parameter pOVP = new Parameter();
+            switch (pOVR.guid)
+            {
+                case ElementDefine.O_OVR_HYS:
+                    pBAT_TYPE = parent.pO_BAT_TYPE;
+                    pOVP = parent.pO_OVP_TH;
+                    break;
+                case ElementDefine.E_OVR_HYS:
+                    pBAT_TYPE = parent.pE_BAT_TYPE;
+                    pOVP = parent.pE_OVP_TH;
+                    break;
+            }
+            if(pBAT_TYPE.phydata == 0)
+            {
+                if (pOVP.phydata >= 4050)
+                {
+                    if (!pOVR.itemlist.Contains("400mV"))
+                    {
+                        pOVR.itemlist.Add("400mV");
+                    }
+                }
+                else
+                {
+                    if (pOVR.itemlist.Contains("400mV"))
+                    {
+                        pOVR.itemlist.Remove("400mV");
+                    }
+                }
+
+            }
+            else if (pBAT_TYPE.phydata == 1)
+            {
+                if (pOVP.phydata >= 3550)
+                {
+                    if (!pOVR.itemlist.Contains("400mV"))
+                    {
+                        pOVR.itemlist.Add("400mV");
+                    }
+                }
+                else
+                {
+                    if (pOVR.itemlist.Contains("400mV"))
+                    {
+                        pOVR.itemlist.Remove("400mV");
+                    }
+                }
+            }
+        }
+        private void UVRItemListAdjust(ref Parameter pUVR, byte num)
+        {
+                int diff=pUVR.itemlist.Count - num;
+            if(diff>0)
+            {
+                for (int i = diff; i > 0; i--)
+                {
+                    pUVR.itemlist.RemoveAt(pUVR.itemlist.Count - 1);
+                }
+            }
+            else if (diff<0)
+            {
+                for (int i = -diff; i > 0; i--)
+                {
+                    pUVR.itemlist.Add((pUVR.itemlist.Count*100).ToString()+"mV");
+                }
+            }
+        }
+        private void UpdateUVR(ref Parameter pUVR)
+        {
+            Parameter pUVP = new Parameter();
+            switch (pUVR.guid)
+            {
+                case ElementDefine.O_UVR_HYS:
+                    pUVP = parent.pO_UVP_TH;
+                    break;
+                case ElementDefine.E_UVR_HYS:
+                    pUVP = parent.pE_UVP_TH;
+                    break;
+            }
+            int num = 16 - (int)pUVP.phydata;
+            if (num > 8)
+                num = 8;
+            int diff = pUVR.itemlist.Count - num;
+            if (diff > 0)
+            {
+                for (int i = diff; i > 0; i--)
+                {
+                    pUVR.itemlist.RemoveAt(pUVR.itemlist.Count - 1);
+                }
+            }
+            else if (diff < 0)
+            {
+                for (int i = -diff; i > 0; i--)
+                {
+                    pUVR.itemlist.Add(((pUVR.itemlist.Count + 1) * 100).ToString() + "mV");
+                }
             }
         }
         /// <summary>
@@ -177,6 +281,14 @@ namespace O2Micro.Cobra.Woodpecker8
                 case ElementDefine.E_OVP_TH:
                 case ElementDefine.O_OVP_TH:
                     UpdateOVP(ref pTarget);
+                    break;
+                case ElementDefine.O_OVR_HYS:
+                case ElementDefine.E_OVR_HYS:
+                    UpdateOVR(ref pTarget);
+                    break;
+                case ElementDefine.O_UVR_HYS:
+                case ElementDefine.E_UVR_HYS:
+                    UpdateUVR(ref pTarget);
                     break;
             }
             FromHexToPhy = false;

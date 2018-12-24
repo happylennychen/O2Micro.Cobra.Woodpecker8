@@ -52,10 +52,12 @@ namespace O2Micro.Cobra.Woodpecker8
         public Parameter pE_DOT_TH = new Parameter();
         public Parameter pE_DOT_E = new Parameter();
         public Parameter pE_OVP_TH = new Parameter();
+        public Parameter pE_UVP_TH = new Parameter();
         public Parameter pO_BAT_TYPE = new Parameter();
         public Parameter pO_DOT_TH = new Parameter();
         public Parameter pO_DOT_E = new Parameter();
         public Parameter pO_OVP_TH = new Parameter();
+        public Parameter pO_UVP_TH = new Parameter();
         //public bool fromCFG = false;
 
         #endregion
@@ -81,6 +83,8 @@ namespace O2Micro.Cobra.Woodpecker8
             pO_BAT_TYPE = pc.GetParameterByGuid(ElementDefine.O_BAT_TYPE);
             pE_OVP_TH = pc.GetParameterByGuid(ElementDefine.E_OVP_TH);
             pO_OVP_TH = pc.GetParameterByGuid(ElementDefine.O_OVP_TH);
+            pE_UVP_TH = pc.GetParameterByGuid(ElementDefine.E_UVP_TH);
+            pO_UVP_TH = pc.GetParameterByGuid(ElementDefine.O_UVP_TH);
             pc = m_Section_ParamlistContainer.GetParameterListByGuid(ElementDefine.VirtualElement);
             pE_DOT_E = pc.GetParameterByGuid(ElementDefine.E_DOT_E);
             pO_DOT_E = pc.GetParameterByGuid(ElementDefine.O_DOT_E);
