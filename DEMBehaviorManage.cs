@@ -1085,6 +1085,8 @@ namespace O2Micro.Cobra.Woodpecker8
 
         private void InitEfuseData()
         {
+            parent.m_OpRegImg[ElementDefine.EF_CFG].err = 0;
+            parent.m_OpRegImg[ElementDefine.EF_CFG].val = 0;
             for (ushort i = ElementDefine.EF_USR_OFFSET; i <= ElementDefine.EF_USR_TOP; i++)
             {
                 parent.m_OpRegImg[i].err = 0;
@@ -1099,8 +1101,6 @@ namespace O2Micro.Cobra.Woodpecker8
 
             if (bank1FRZ == false)
                 parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val |= 0x80;    //Set Frozen bit in image
-            else if (bank2FRZ == false)
-                parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].val |= 0x80;    //Set Frozen bit in image
         }
 
         private byte WritingBank1Or2 = 0;   //bank1
@@ -1338,11 +1338,14 @@ namespace O2Micro.Cobra.Woodpecker8
         private UInt32 GetEfuseHexData(ref TASKMessage msg)
         {
             string tmp = "";
+            if (parent.m_OpRegImg[ElementDefine.EF_CFG].err != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                return parent.m_OpRegImg[ElementDefine.EF_CFG].err;
+            tmp += "0x" + ElementDefine.EF_CFG.ToString("X2") + ", " + "0x" + parent.m_OpRegImg[ElementDefine.EF_CFG].val.ToString("X2") + "\r\n";
             for (ushort i = ElementDefine.EF_USR_BANK1_OFFSET; i <= ElementDefine.EF_USR_BANK1_TOP; i++)
             {
                 if (parent.m_OpRegImg[i].err != LibErrorCode.IDS_ERR_SUCCESSFUL)
                     return parent.m_OpRegImg[i].err;
-                tmp += "0x" + i.ToString("X2") + ", " + "0x" + parent.m_OpRegImg[i].val.ToString("X4") + "\r\n";
+                tmp += "0x" + i.ToString("X2") + ", " + "0x" + parent.m_OpRegImg[i].val.ToString("X2") + "\r\n";
             }
             msg.sm.efusehexdata = tmp;
             return LibErrorCode.IDS_ERR_SUCCESSFUL;
@@ -1351,17 +1354,16 @@ namespace O2Micro.Cobra.Woodpecker8
         private UInt32 GetEfuseBinData(ref TASKMessage msg)
         {
             List<byte> tmp = new List<byte>();
+            if (parent.m_OpRegImg[ElementDefine.EF_CFG].err != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                return parent.m_OpRegImg[ElementDefine.EF_CFG].err;
+            tmp.Add((byte)ElementDefine.EF_CFG);
+            tmp.Add((byte)(parent.m_OpRegImg[ElementDefine.EF_CFG].val));
             for (ushort i = ElementDefine.EF_USR_BANK1_OFFSET; i <= ElementDefine.EF_USR_BANK1_TOP; i++)
             {
                 if (parent.m_OpRegImg[i].err != LibErrorCode.IDS_ERR_SUCCESSFUL)
                     return parent.m_OpRegImg[i].err;
-                //tmp += "0x" + i.ToString("X2") + ", " + "0x" + parent.m_EFRegImg[i].val.ToString("X4") + "\r\n";
                 tmp.Add((byte)i);
-                byte hi = 0, low = 0;
-                hi = (byte)((parent.m_OpRegImg[i].val) >> 8);
-                low = (byte)(parent.m_OpRegImg[i].val);
-                tmp.Add(hi);
-                tmp.Add(low);
+                tmp.Add((byte)(parent.m_OpRegImg[i].val));
             }
             msg.sm.efusebindata = tmp;
             return LibErrorCode.IDS_ERR_SUCCESSFUL;
