@@ -400,6 +400,10 @@ namespace O2Micro.Cobra.Woodpecker8
                         p.phydata = ElementDefine.PARAM_PHYSICAL_ERROR;
                         break;
                     }
+                    if (wdata < 0x0a)
+                        wdata = 0x0a;
+                    else if (wdata > 0x3c)
+                        wdata = 0x3c;
                     dtmp = (double)((double)wdata * p.phyref / p.regref);
                     p.phydata = dtmp + p.offset;
                     break;

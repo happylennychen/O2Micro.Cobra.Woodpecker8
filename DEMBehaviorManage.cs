@@ -324,7 +324,6 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 if (uOutLength == 2 && yDataOut[0] == 0x51 && yDataOut[1] == 0x1)
                 {
-                    Thread.Sleep(200);
                     return LibErrorCode.IDS_ERR_SUCCESSFUL;
                 }
                 else
@@ -919,8 +918,36 @@ namespace O2Micro.Cobra.Woodpecker8
             switch ((ElementDefine.COMMAND)msg.sub_task)
             {
 
+                case ElementDefine.COMMAND.FROZEN_BIT_CHECK_PC:
+                    ret = PowerOn();
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+
+                    ret = FrozenBitCheck();
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+
+                    ret = PowerOff();
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+                    break;
+
                 case ElementDefine.COMMAND.FROZEN_BIT_CHECK:
                     ret = FrozenBitCheck();
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+                    break;
+
+                case ElementDefine.COMMAND.DIRTY_CHIP_CHECK_PC:
+                    ret = PowerOn();
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+
+                    ret = DirtyChipCheck();
+                    if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                        return ret;
+
+                    ret = PowerOff();
                     if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                         return ret;
                     break;
@@ -931,7 +958,7 @@ namespace O2Micro.Cobra.Woodpecker8
                         return ret;
                     break;
 
-                case ElementDefine.COMMAND.DOWNLOAD_WITH_POWER_CONTROL:
+                case ElementDefine.COMMAND.DOWNLOAD_PC:
                     {
                         ret = DownloadWithPowerControl(ref msg);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -942,7 +969,7 @@ namespace O2Micro.Cobra.Woodpecker8
                         break;
                     }
 
-                case ElementDefine.COMMAND.DOWNLOAD_WITHOUT_POWER_CONTROL:
+                case ElementDefine.COMMAND.DOWNLOAD:
                     {
                         ret = DownloadWithoutPowerControl(ref msg);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -950,6 +977,21 @@ namespace O2Micro.Cobra.Woodpecker8
 #if debug
                         Thread.Sleep(1000);
 #endif
+                        break;
+                    }
+                case ElementDefine.COMMAND.READ_BACK_CHECK_PC:
+                    {
+                        ret = PowerOn();
+                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                            return ret;
+
+                        ret = ReadBackCheck();
+                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                            return ret;
+
+                        ret = PowerOff();
+                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                            return ret;
                         break;
                     }
                 case ElementDefine.COMMAND.READ_BACK_CHECK:
