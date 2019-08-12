@@ -324,6 +324,7 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 if (uOutLength == 2 && yDataOut[0] == 0x51 && yDataOut[1] == 0x1)
                 {
+                    Thread.Sleep(200);	//sync with SP8G2
                     return LibErrorCode.IDS_ERR_SUCCESSFUL;
                 }
                 else
@@ -1239,6 +1240,12 @@ namespace O2Micro.Cobra.Woodpecker8
                 {
                     return ret;
                 }
+                byte tmp = 0;
+                ret = ReadByte((byte)(badd + offset), ref tmp);     //Issue 1746 workaround
+                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                {
+                    return ret;
+                }
             }
 
             ret = PowerOff();
@@ -1365,13 +1372,17 @@ namespace O2Micro.Cobra.Woodpecker8
                 ret = ReadByte((byte)(badd + 4*WritingBank1Or2), ref pval);
                 if (pval != EFUSEUSRbuf[badd - ElementDefine.EF_USR_BANK1_OFFSET])
                 {
+                    FolderMap.WriteFile("Read back check, address: 0x" + (badd + 4 * WritingBank1Or2).ToString("X2") + "\torigi value: 0x" + EFUSEUSRbuf[badd - ElementDefine.EF_USR_BANK1_OFFSET].ToString("X2") + "\tread value: 0x" + pval.ToString("X2"));
                     return LibErrorCode.IDS_ERR_DEM_BUF_CHECK_FAIL;
                 }
             }
-            ret = ReadByte((byte)(0x16), ref pval);
-            if (pval != EFUSEUSRbuf[4])
+            if (cfgFRZ == true)
             {
-                return LibErrorCode.IDS_ERR_DEM_BUF_CHECK_FAIL;
+                ret = ReadByte((byte)(0x16), ref pval);
+                if (pval != EFUSEUSRbuf[4])
+                {
+                    return LibErrorCode.IDS_ERR_DEM_BUF_CHECK_FAIL;
+                }
             }
             return ret;
 #endif
