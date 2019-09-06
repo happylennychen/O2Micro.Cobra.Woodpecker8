@@ -2342,6 +2342,347 @@
         </SFL>
       </Private>
     </Element>
+    <Element Guid="0x00032000">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>3F</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>63</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>20</Address>
+          <StartBit>0</StartBit>
+          <BitsNumber>6</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>20</Index>
+          <BitStart>0</BitStart>
+          <Length>6</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>vref_vtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032100">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>F</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>15</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>21</Address>
+          <StartBit>0</StartBit>
+          <BitsNumber>4</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>21</Index>
+          <BitStart>0</BitStart>
+          <Length>4</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>vref_ttrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032104">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>F</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>15</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>21</Address>
+          <StartBit>4</StartBit>
+          <BitsNumber>4</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>21</Index>
+          <BitStart>4</BitStart>
+          <Length>4</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>osc8k_ftrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032200">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>22</Address>
+          <StartBit>0</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>22</Index>
+          <BitStart>0</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell1_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032204">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>22</Address>
+          <StartBit>4</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>22</Index>
+          <BitStart>4</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell2_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032300">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>23</Address>
+          <StartBit>0</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>23</Index>
+          <BitStart>0</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell3_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032304">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>23</Address>
+          <StartBit>4</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>23</Index>
+          <BitStart>4</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell4_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032400">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>24</Address>
+          <StartBit>0</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>24</Index>
+          <BitStart>0</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell5_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032404">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>24</Address>
+          <StartBit>4</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>24</Index>
+          <BitStart>4</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell6_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032500">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>25</Address>
+          <StartBit>0</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>25</Index>
+          <BitStart>0</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell7_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032504">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>7</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>7</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>25</Address>
+          <StartBit>4</StartBit>
+          <BitsNumber>3</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>25</Index>
+          <BitStart>4</BitStart>
+          <Length>3</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>cell8_ovtrim</Description>
+        </SFL>
+      </Private>
+    </Element>
     <Element Guid="0x00032600">
       <PhysicalData>0</PhysicalData>
       <PhyRef>1</PhyRef>
@@ -2698,6 +3039,68 @@
           <Write>true</Write>
           <Group>Woodpecker8</Group>
           <Description>cfg_frozen</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032700">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>F</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>15</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>27</Address>
+          <StartBit>0</StartBit>
+          <BitsNumber>4</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>27</Index>
+          <BitStart>0</BitStart>
+          <Length>4</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>ate_crc_sum</Description>
+        </SFL>
+      </Private>
+    </Element>
+    <Element Guid="0x00032707">
+      <PhysicalData>0</PhysicalData>
+      <PhyRef>1</PhyRef>
+      <RegRef>1</RegRef>
+      <SubType>0</SubType>
+      <HexMin>0</HexMin>
+      <HexMax>1</HexMax>
+      <PhyMin>0</PhyMin>
+      <PhyMax>1</PhyMax>
+      <LocationList>
+        <Location Position="Low">
+          <Address>27</Address>
+          <StartBit>7</StartBit>
+          <BitsNumber>1</BitsNumber>
+        </Location>
+      </LocationList>
+      <Private>
+        <SFL Name="Expert">
+          <CustomerMode>true</CustomerMode>
+          <BitTotal>8</BitTotal>
+          <Index>27</Index>
+          <BitStart>7</BitStart>
+          <Length>1</Length>
+          <Value>0</Value>
+          <Read>true</Read>
+          <Write>true</Write>
+          <Group>Woodpecker8</Group>
+          <Description>ate_frozen</Description>
         </SFL>
       </Private>
     </Element>
