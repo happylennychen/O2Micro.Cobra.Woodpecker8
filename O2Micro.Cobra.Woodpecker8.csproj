@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>O2Micro.Cobra.Woodpecker8</RootNamespace>
-    <AssemblyName>O2Micro.Cobra.Woodpecker8</AssemblyName>
+    <AssemblyName>O2Micro.Cobra.OZ8978</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
