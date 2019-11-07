@@ -756,6 +756,7 @@
     </Element>
     <Element Guid="0x00031900">
       <PhysicalData>0</PhysicalData>
+      <Offset>3900</Offset>
       <PhyRef>10</PhyRef>
       <RegRef>1</RegRef>
       <SubType>2</SubType>
@@ -2081,6 +2082,7 @@
     </Element>
     <Element Guid="0x00032900">
       <PhysicalData>0</PhysicalData>
+      <Offset>3900</Offset>
       <PhyRef>10</PhyRef>
       <RegRef>1</RegRef>
       <SubType>2</SubType>
