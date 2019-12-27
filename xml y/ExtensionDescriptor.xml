@@ -18,6 +18,7 @@
     <Button Label = "EFUSE Config" Name ="DeviceConfig"   PanelName ="O2Micro.Cobra.DeviceConfigurationPanel">
       <Layout Name ="layout" bOrder ="true">
         <Button Name ="EraseBtn" IsEnable ="False" Visibility="Collapsed"/>
+        <Button Name ="VerifyBtn" Recontent="Verify" IsEnable ="true" Visibility="Visible"/>
       </Layout>
     </Button>
     <Button Label = "Mass Production" DBModuleName="Production"  Name = "Production" ShowVerify="True" ShowConfig="True" ShowHEX="True"  PanelName ="O2Micro.Cobra.ProductionPanel">

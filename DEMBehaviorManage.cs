@@ -871,7 +871,11 @@ namespace O2Micro.Cobra.Woodpecker8
                 {
                     return LibErrorCode.IDS_ERR_SUCCESSFUL;
                 }
-                else if (!msg.funName.Equals("Read"))    //Issue1369
+                else if(msg.funName.Equals("Verify") || msg.funName.Equals("Read"))
+                {
+                    ;   //do nothing
+                }
+                else    //Issue1369
                 {
                     return LibErrorCode.IDS_ERR_SUCCESSFUL;
                 }
