@@ -136,7 +136,8 @@ namespace O2Micro.Cobra.Woodpecker8
             DOWNLOAD = 14,
             READ_BACK_CHECK_PC = 15,
             READ_BACK_CHECK = 16,
-            GET_EFUSE_HEX_DATA = 17
+            //GET_EFUSE_HEX_DATA = 17,  //不再使用此命令，与kall系列统一
+            SAVE_EFUSE_HEX = 18
         }
 
     }
