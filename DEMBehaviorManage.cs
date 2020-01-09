@@ -1082,6 +1082,45 @@ namespace O2Micro.Cobra.Woodpecker8
                         }
                         break;
                     }
+                case ElementDefine.COMMAND.BIN_FILE_CHECK:
+                    {
+                        string binFileName = msg.sub_task_json;
+
+                        var blist = SharedAPI.LoadBinFileToList(binFileName);
+                        if (blist.Count == 0)
+                            ret = LibErrorCode.IDS_ERR_DEM_LOAD_BIN_FILE_ERROR;
+                        else
+                            ret = CheckBinData(blist);
+                        break;
+                    }
+            }
+            return ret;
+        }
+
+        public uint CheckBinData(List<byte> blist)
+        {
+            UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
+            int length = (ElementDefine.EF_USR_BANK1_TOP - ElementDefine.EF_USR_BANK1_OFFSET + 1) + 1;//多加一个1是因为0x16
+            length *= 2;    //一个字节地址，一个字节数值
+            if (blist.Count != length)
+            {
+                ret = LibErrorCode.IDS_ERR_DEM_BIN_LENGTH_ERROR;
+            }
+            else
+            {
+                if (blist[0] != ElementDefine.EF_CFG)
+                {
+                    ret = LibErrorCode.IDS_ERR_DEM_BIN_ADDRESS_ERROR;
+                }
+                else
+                    for (int i = ElementDefine.EF_USR_BANK1_OFFSET, j = 1; i <= ElementDefine.EF_USR_BANK1_TOP; i++, j++)
+                    {
+                        if (blist[j * 2] != i)
+                        {
+                            ret = LibErrorCode.IDS_ERR_DEM_BIN_ADDRESS_ERROR;
+                            break;
+                        }
+                    }
             }
             return ret;
         }
@@ -1435,7 +1474,7 @@ namespace O2Micro.Cobra.Woodpecker8
                     return LibErrorCode.IDS_ERR_DEM_BUF_CHECK_FAIL;
                 }
             }
-            if (cfgFRZ == true)
+            if (cfgFRZ == false)
             {
                 ret = ReadByte((byte)(0x16), ref pval);
                 if (pval != EFUSEUSRbuf[4])

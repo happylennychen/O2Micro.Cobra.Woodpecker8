@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Root usage="DeviceDescriptor" chip="woodpecker8" version="1.00">
+<Root usage="DeviceDescriptor" chip="OZ8978" version="1.00">
   <Section Name ="BusOptions" Guid ="0x00100000">
     <Element Guid ="0x00100000">
       <PhysicalData>0</PhysicalData>
@@ -50,7 +50,7 @@
         <SFL Name ="BusOptions">
           <Order>0</Order>
           <NickName>I2C Address:</NickName>
-          <Catalog>Woodpecker</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>20</DefValue>
           <EditType>1</EditType>
           <Format>1</Format>
@@ -71,7 +71,7 @@
         <SFL Name ="BusOptions">
           <Order>1</Order>
           <NickName>PEC enable</NickName>
-          <Catalog>Woodpecker</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <EditType>1</EditType>
           <Format>1</Format>
@@ -278,7 +278,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>HWID1</Description>
         </SFL>
       </Private>
@@ -309,7 +309,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>HWID2</Description>
         </SFL>
       </Private>
@@ -340,7 +340,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>vref_vtrim</Description>
         </SFL>
       </Private>
@@ -371,7 +371,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>vref_ttrim</Description>
         </SFL>
       </Private>
@@ -402,7 +402,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>osc8k_ftrim</Description>
         </SFL>
       </Private>
@@ -433,7 +433,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell1_ovtrim</Description>
         </SFL>
       </Private>
@@ -464,7 +464,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell2_ovtrim</Description>
         </SFL>
       </Private>
@@ -495,7 +495,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell3_ovtrim</Description>
         </SFL>
       </Private>
@@ -526,7 +526,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell4_ovtrim</Description>
         </SFL>
       </Private>
@@ -557,7 +557,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell5_ovtrim</Description>
         </SFL>
       </Private>
@@ -588,7 +588,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell6_ovtrim</Description>
         </SFL>
       </Private>
@@ -619,7 +619,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell7_ovtrim</Description>
         </SFL>
       </Private>
@@ -650,7 +650,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cell8_ovtrim</Description>
         </SFL>
       </Private>
@@ -685,12 +685,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>DSGPAD_TYPE</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>DSGPAD_TYPE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -731,12 +731,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>DSGPAD_ACTIVE_O</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>DSGPAD_ACTIVE_O</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -777,12 +777,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>CHGPAD_TYPE</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>CHGPAD_TYPE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -823,12 +823,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>CHGPAD_ACTIVE_O</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>CHGPAD_ACTIVE_O</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -869,12 +869,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>UVP_DIS</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>UVP_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -921,12 +921,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>DOT_ON_SDA_DIS</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>DOT_ON_SDA_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -967,12 +967,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>THM_SHARE</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>THM_SHARE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1009,7 +1009,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>cfg_frozen</Description>
         </SFL>
       </Private>
@@ -1040,7 +1040,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>ate_crc_sum</Description>
         </SFL>
       </Private>
@@ -1071,7 +1071,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>ate_frozen</Description>
         </SFL>
       </Private>
@@ -1108,12 +1108,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Tot-ut-dly</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Tot-ut-dly</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -1154,12 +1154,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>DOT_TH</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>DOT_TH</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1203,12 +1203,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>COT_TH</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>COT_TH</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1249,12 +1249,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>SW_RELEASE</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>SW_RELEASE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1297,12 +1297,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Ncell</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Ncell</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -1340,12 +1340,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vovp</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Vovp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>4000</DefValue>
           <MinValue>4000</MinValue>
           <MaxValue>4500</MaxValue>
@@ -1389,12 +1389,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>CUT_DIS</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>CUT_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1435,12 +1435,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>UV_ON_CHGPAD</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>UV_ON_CHGPAD</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1495,12 +1495,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vuvp</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Vuvp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>15</MaxValue>
@@ -1550,12 +1550,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vuvr-hys</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Vuvr-hys</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>
@@ -1596,12 +1596,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>BAT_TYPE</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>BAT_TYPE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -1648,12 +1648,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Tovp</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Tovp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -1696,12 +1696,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Tuvp</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Tuvp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -1747,12 +1747,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vovr-hys</Description>
         </SFL>
         <SFL Name="EFUSE Config">
           <NickName>Vovr-hys</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>
@@ -1789,7 +1789,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>user_frozen_bank1</Description>
         </SFL>
       </Private>
@@ -1826,7 +1826,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Tot-ut-dly</Description>
         </SFL>
       </Private>
@@ -1863,7 +1863,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>DOT_TH</Description>
         </SFL>
       </Private>
@@ -1898,7 +1898,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>COT_TH</Description>
         </SFL>
       </Private>
@@ -1929,7 +1929,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>SW_RELEASE</Description>
         </SFL>
       </Private>
@@ -1966,7 +1966,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Ncell</Description>
         </SFL>
       </Private>
@@ -1997,7 +1997,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vovp</Description>
         </SFL>
       </Private>
@@ -2032,7 +2032,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>CUT_DIS</Description>
         </SFL>
       </Private>
@@ -2067,7 +2067,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>UV_ON_CHGPAD</Description>
         </SFL>
       </Private>
@@ -2116,7 +2116,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vuvp</Description>
         </SFL>
       </Private>
@@ -2157,7 +2157,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vuvr-hys</Description>
         </SFL>
       </Private>
@@ -2192,7 +2192,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>BAT_TYPE</Description>
         </SFL>
       </Private>
@@ -2229,7 +2229,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Tovp</Description>
         </SFL>
       </Private>
@@ -2266,7 +2266,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Tuvp</Description>
         </SFL>
       </Private>
@@ -2307,7 +2307,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>Vovr-hys</Description>
         </SFL>
       </Private>
@@ -2338,7 +2338,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>EFUSE</Group>
           <Description>user_frozen_bank2</Description>
         </SFL>
       </Private>
@@ -2369,7 +2369,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>vref_vtrim</Description>
         </SFL>
       </Private>
@@ -2400,7 +2400,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>vref_ttrim</Description>
         </SFL>
       </Private>
@@ -2431,7 +2431,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>osc8k_ftrim</Description>
         </SFL>
       </Private>
@@ -2462,7 +2462,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell1_ovtrim</Description>
         </SFL>
       </Private>
@@ -2493,7 +2493,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell2_ovtrim</Description>
         </SFL>
       </Private>
@@ -2524,7 +2524,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell3_ovtrim</Description>
         </SFL>
       </Private>
@@ -2555,7 +2555,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell4_ovtrim</Description>
         </SFL>
       </Private>
@@ -2586,7 +2586,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell5_ovtrim</Description>
         </SFL>
       </Private>
@@ -2617,7 +2617,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell6_ovtrim</Description>
         </SFL>
       </Private>
@@ -2648,7 +2648,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell7_ovtrim</Description>
         </SFL>
       </Private>
@@ -2679,7 +2679,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cell8_ovtrim</Description>
         </SFL>
       </Private>
@@ -2714,12 +2714,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>DSGPAD_TYPE</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>DSGPAD_TYPE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2760,12 +2760,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>DSGPAD_ACTIVE_O</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>DSGPAD_ACTIVE_O</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2806,12 +2806,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>CHGPAD_TYPE</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>CHGPAD_TYPE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2852,12 +2852,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>CHGPAD_ACTIVE_O</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>CHGPAD_ACTIVE_O</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2898,12 +2898,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>UVP_DIS</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>UVP_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2950,12 +2950,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>DOT_ON_SDA_DIS</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>DOT_ON_SDA_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -2996,12 +2996,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>THM_SHARE</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>THM_SHARE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -3038,7 +3038,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>cfg_frozen</Description>
         </SFL>
       </Private>
@@ -3069,7 +3069,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>ate_crc_sum</Description>
         </SFL>
       </Private>
@@ -3100,7 +3100,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>ate_frozen</Description>
         </SFL>
       </Private>
@@ -3137,12 +3137,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Tot-ut-dly</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Tot-ut-dly</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -3183,12 +3183,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>DOT_TH</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>DOT_TH</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -3232,12 +3232,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>COT_TH</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>COT_TH</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -3278,12 +3278,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>SW_RELEASE</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>SW_RELEASE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -3326,12 +3326,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Ncell</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Ncell</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -3369,12 +3369,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vovp</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vovp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>4000</DefValue>
           <MinValue>4000</MinValue>
           <MaxValue>4500</MaxValue>
@@ -3418,12 +3418,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>CUT_DIS</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>CUT_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -3464,12 +3464,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>UV_ON_CHGPAD</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>UV_ON_CHGPAD</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -3524,12 +3524,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vuvp</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vuvp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>15</MaxValue>
@@ -3579,12 +3579,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vuvr-hys</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vuvr-hys</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>
@@ -3625,12 +3625,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>BAT_TYPE</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>BAT_TYPE</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>1</MaxValue>
@@ -3677,12 +3677,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Tovp</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Tovp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -3725,12 +3725,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Tuvp</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Tuvp</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>3</MaxValue>
@@ -3776,12 +3776,12 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vovr-hys</Description>
         </SFL>
         <SFL Name="Register Config">
           <NickName>Vovr-hys</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <MinValue>0</MinValue>
           <MaxValue>7</MaxValue>
@@ -3818,7 +3818,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>user_frozen_bank1</Description>
         </SFL>
       </Private>
@@ -3855,7 +3855,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Tot-ut-dly</Description>
         </SFL>
       </Private>
@@ -3886,7 +3886,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>DOT_TH</Description>
         </SFL>
       </Private>
@@ -3917,7 +3917,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>COT_TH</Description>
         </SFL>
       </Private>
@@ -3948,7 +3948,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>SW_RELEASE</Description>
         </SFL>
       </Private>
@@ -3979,7 +3979,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Ncell</Description>
         </SFL>
       </Private>
@@ -4010,7 +4010,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vovp</Description>
         </SFL>
       </Private>
@@ -4041,7 +4041,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>CUT_DIS</Description>
         </SFL>
       </Private>
@@ -4072,7 +4072,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>UV_ON_CHGPAD</Description>
         </SFL>
       </Private>
@@ -4103,7 +4103,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vuvp</Description>
         </SFL>
       </Private>
@@ -4134,7 +4134,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vuvr-hys</Description>
         </SFL>
       </Private>
@@ -4165,7 +4165,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>BAT_TYPE</Description>
         </SFL>
       </Private>
@@ -4196,7 +4196,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Tovp</Description>
         </SFL>
       </Private>
@@ -4227,7 +4227,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Tuvp</Description>
         </SFL>
       </Private>
@@ -4258,7 +4258,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>Vovr-hys</Description>
         </SFL>
       </Private>
@@ -4289,7 +4289,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>Mapping</Group>
           <Description>user_frozen_bank2</Description>
         </SFL>
       </Private>
@@ -4320,7 +4320,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cell_sel</Description>
         </SFL>
       </Private>
@@ -4351,7 +4351,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cto_sel</Description>
         </SFL>
       </Private>
@@ -4382,7 +4382,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>ov_th</Description>
         </SFL>
       </Private>
@@ -4413,7 +4413,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>ovp_enable</Description>
         </SFL>
       </Private>
@@ -4444,7 +4444,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>uv_th</Description>
         </SFL>
       </Private>
@@ -4475,7 +4475,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>uvp_enable</Description>
         </SFL>
       </Private>
@@ -4506,7 +4506,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cto_enable</Description>
         </SFL>
       </Private>
@@ -4537,7 +4537,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>otut_th_sel</Description>
         </SFL>
       </Private>
@@ -4568,7 +4568,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cotp_enable</Description>
         </SFL>
       </Private>
@@ -4599,7 +4599,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>dotp_enable</Description>
         </SFL>
       </Private>
@@ -4630,7 +4630,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>uvp_state</Description>
         </SFL>
       </Private>
@@ -4661,7 +4661,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>ovp_state</Description>
         </SFL>
       </Private>
@@ -4692,7 +4692,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>dotp_state</Description>
         </SFL>
       </Private>
@@ -4723,7 +4723,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cotp_state</Description>
         </SFL>
       </Private>
@@ -4754,7 +4754,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cutp_state</Description>
         </SFL>
       </Private>
@@ -4785,7 +4785,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cto_state</Description>
         </SFL>
       </Private>
@@ -4816,7 +4816,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>ls_observe</Description>
         </SFL>
       </Private>
@@ -4847,7 +4847,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>vref_observe</Description>
         </SFL>
       </Private>
@@ -4878,7 +4878,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>vref_enable</Description>
         </SFL>
       </Private>
@@ -4909,7 +4909,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>ext_thm_enable</Description>
         </SFL>
       </Private>
@@ -4940,7 +4940,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cutp_enable</Description>
         </SFL>
       </Private>
@@ -4971,7 +4971,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>vpp_enable</Description>
         </SFL>
       </Private>
@@ -5002,7 +5002,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>vd_enable</Description>
         </SFL>
       </Private>
@@ -5033,7 +5033,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>uvp_flag</Description>
         </SFL>
       </Private>
@@ -5064,7 +5064,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>ovp_flag</Description>
         </SFL>
       </Private>
@@ -5095,7 +5095,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>dotp_flag</Description>
         </SFL>
       </Private>
@@ -5126,7 +5126,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cotp_flag</Description>
         </SFL>
       </Private>
@@ -5157,7 +5157,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cutp_flag</Description>
         </SFL>
       </Private>
@@ -5188,7 +5188,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>cto_flag</Description>
         </SFL>
       </Private>
@@ -5219,7 +5219,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>i2c_timeout_flag</Description>
         </SFL>
       </Private>
@@ -5250,7 +5250,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>sw_ext_thm_cfg</Description>
         </SFL>
       </Private>
@@ -5281,7 +5281,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>sw_mapping_req</Description>
         </SFL>
       </Private>
@@ -5312,7 +5312,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>chgpad_out</Description>
         </SFL>
       </Private>
@@ -5343,7 +5343,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>false</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>dsgpad_out</Description>
         </SFL>
       </Private>
@@ -5374,7 +5374,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>efuse_mode</Description>
         </SFL>
       </Private>
@@ -5405,7 +5405,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>sw_speedup_enable</Description>
         </SFL>
       </Private>
@@ -5436,7 +5436,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>mapping_disable</Description>
         </SFL>
       </Private>
@@ -5467,7 +5467,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>allow_wr</Description>
         </SFL>
       </Private>
@@ -5498,7 +5498,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>test_ctrl</Description>
         </SFL>
       </Private>
@@ -5529,7 +5529,7 @@
           <Value>0</Value>
           <Read>true</Read>
           <Write>true</Write>
-          <Group>Woodpecker8</Group>
+          <Group>OZ8978</Group>
           <Description>test_sim</Description>
         </SFL>
       </Private>
@@ -5553,7 +5553,7 @@
         <SFL Name="EFUSE Config">
           <Order>b</Order>
           <NickName>OT_UT_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <EditType>1</EditType>
           <Format>0</Format>
@@ -5588,7 +5588,7 @@
         <SFL Name="Register Config">
           <Order>b</Order>
           <NickName>OT_UT_DIS</NickName>
-          <Catalog>Woodpecker8</Catalog>
+          <Catalog>OZ8978</Catalog>
           <DefValue>0</DefValue>
           <EditType>1</EditType>
           <Format>0</Format>

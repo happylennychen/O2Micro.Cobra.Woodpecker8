@@ -34,6 +34,7 @@
         <Item SubTaskID="15" RadioOption="0">Read Back Check(PC)</Item>
         <Item SubTaskID="16" RadioOption="1">Read Back Check</Item>
       </Process>
+      <BinFileCheck SubTaskID="21"></BinFileCheck>
     </Button>
   </Part>
 </Root>
