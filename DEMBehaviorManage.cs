@@ -578,11 +578,6 @@ namespace O2Micro.Cobra.Woodpecker8
             }
             return ret;
         }
-        private void SetDefaultValue()
-        {
-            parent.m_OpRegImg[0x16].val |= 0x60;
-            parent.m_OpRegImg[0x18].val |= 0x13;
-        }
         public UInt32 Write(ref TASKMessage msg)
         {
             Reg reg = null;
@@ -748,7 +743,7 @@ namespace O2Micro.Cobra.Woodpecker8
                     }
                 }
                 #endregion
-                SetDefaultValue();
+
                 if (operatingbank == 1)
                     parent.m_OpRegImg[0x1b].val |= 0x80;
                 else if (operatingbank == 2)
@@ -1236,7 +1231,6 @@ namespace O2Micro.Cobra.Woodpecker8
 
         private void PrepareHexData()
         {
-            SetDefaultValue();
             if (cfgFRZ == false)
                 parent.m_OpRegImg[ElementDefine.EF_CFG].val |= 0x80;    //Set Frozen bit in image
 
