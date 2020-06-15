@@ -996,7 +996,7 @@ namespace O2Micro.Cobra.Woodpecker8
 
                 case ElementDefine.COMMAND.DOWNLOAD_PC:
                     {
-                        ret = DownloadWithPowerControl(ref msg);
+                        ret = Download(ref msg, msg.sm.efusebindata, true);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
 #if debug
@@ -1007,7 +1007,7 @@ namespace O2Micro.Cobra.Woodpecker8
 
                 case ElementDefine.COMMAND.DOWNLOAD:
                     {
-                        ret = DownloadWithoutPowerControl(ref msg);
+                        ret = Download(ref msg, msg.sm.efusebindata, false);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
 #if debug
@@ -1231,16 +1231,16 @@ namespace O2Micro.Cobra.Woodpecker8
 
         private void PrepareHexData()
         {
-            if (cfgFRZ == false)
+            //if (cfgFRZ == false)
                 parent.m_OpRegImg[ElementDefine.EF_CFG].val |= 0x80;    //Set Frozen bit in image
 
-            if (bank1FRZ == false)
+            //if (bank1FRZ == false)
                 parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val |= 0x80;    //Set Frozen bit in image
         }
 
         private byte WritingBank1Or2 = 0;   //bank1
 
-        private UInt32 DownloadWithPowerControl(ref TASKMessage msg)
+        private UInt32 Download(ref TASKMessage msg, List<byte> efusebindata, bool isWithPowerControl)
         {
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
 
@@ -1251,10 +1251,12 @@ namespace O2Micro.Cobra.Woodpecker8
             {
                 return ret;
             }
-
-            ret = PowerOn();
-            if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                return ret;
+            if (isWithPowerControl)
+            {
+                ret = PowerOn();
+                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                    return ret;
+            }
 
             byte offset = 0;
             if (cfgFRZ == true)
@@ -1339,10 +1341,13 @@ namespace O2Micro.Cobra.Woodpecker8
                     return ret;
                 }
             }
+            if (!isWithPowerControl)
+            {
+                ret = PowerOff();
+                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                    return ret;
 
-            ret = PowerOff();
-            if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                return ret;
+            }
 
             ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
             if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -1353,102 +1358,23 @@ namespace O2Micro.Cobra.Woodpecker8
             return ret;
         }
 
-        private UInt32 DownloadWithoutPowerControl(ref TASKMessage msg)
+        private Dictionary<string, ushort> LoadEFRegImgFromEFUSEBin(List<byte> efusebindata)
         {
-            UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-
-            PrepareHexData();
-
-            ret = SetWorkMode(ElementDefine.WORK_MODE.PROGRAM);
-            if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+            Dictionary<string, ushort> output = new Dictionary<string, ushort>();
+            for (int i = 0; i < (ElementDefine.EF_USR_TOP - ElementDefine.EF_USR_OFFSET + 1); i++)
             {
-                return ret;
+                output.Add(efusebindata[i * 3].ToString("X2"), SharedFormula.MAKEWORD(efusebindata[i * 3 + 2], efusebindata[i * 3 + 1]));
             }
-            byte offset = 0;
-            if (cfgFRZ == true)
+            return output;
+        }
+
+        private void WriteToEFUSEBuffer(Dictionary<string, ushort> EFRegImg)
+        {
+            foreach (var key in EFRegImg.Keys)
             {
-                //System.Windows.Forms.MessageBox.Show("Config register 0x16 is frozen. Skip to program it.");
-                msg.gm.message = "Register 0x16 is frozen. Skip to program it.";
-                msg.gm.level = 0;
-                msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                byte badd = Convert.ToByte(key, 16);
+                EFUSEUSRbuf[badd - (byte)ElementDefine.EF_USR_OFFSET] = EFRegImg[key];
             }
-            else
-            {
-                byte address = 0x16;
-
-#if debug
-                ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-#else
-                ret = parent.m_OpRegImg[address].err;
-#endif
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                {
-                    return ret;
-                }
-
-#if debug
-                EFUSEUSRbuf[address] = 0;
-#else
-                EFUSEUSRbuf[4] = parent.m_OpRegImg[address].val;
-#endif
-                ret = WriteByte(address, (byte)parent.m_OpRegImg[address].val);
-                parent.m_OpRegImg[address].err = ret;
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                {
-                    return ret;
-                }
-            }
-
-            if (bank1FRZ == false)
-            {
-                //System.Windows.Forms.MessageBox.Show("Writing bank1.");
-                msg.gm.message = "Writing bank1.";
-                msg.gm.level = 0;
-                msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
-                WritingBank1Or2 = 0;
-            }
-            else if (bank2FRZ == false)
-            {
-                offset = 4;
-                //System.Windows.Forms.MessageBox.Show("Bank1 is frozen, writing bank2.");
-                msg.gm.message = "Bank1 is frozen, writing bank2.";
-                msg.gm.level = 0;
-                msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
-                WritingBank1Or2 = 1;
-            }
-
-            for (byte badd = (byte)ElementDefine.EF_USR_BANK1_OFFSET; badd <= (byte)ElementDefine.EF_USR_BANK1_TOP; badd++)
-            {
-#if debug
-                ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-#else
-                ret = parent.m_OpRegImg[badd].err;
-#endif
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                {
-                    return ret;
-                }
-
-#if debug
-                EFUSEUSRbuf[badd - ElementDefine.EF_USR_OFFSET] = 0;
-#else
-                EFUSEUSRbuf[badd - ElementDefine.EF_USR_BANK1_OFFSET] = parent.m_OpRegImg[badd].val;
-#endif
-                ret = WriteByte((byte)(badd + offset), (byte)parent.m_OpRegImg[badd].val);
-                parent.m_OpRegImg[(byte)(badd)].err = ret;
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                {
-                    return ret;
-                }
-            }
-
-            ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
-            if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-            {
-                return ret;
-            }
-
-            return ret;
         }
 
         private UInt32 ReadBackCheck()
