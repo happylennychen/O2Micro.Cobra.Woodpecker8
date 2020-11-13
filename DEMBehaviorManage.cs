@@ -12,12 +12,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.ComponentModel;
-using O2Micro.Cobra.Communication;
-using O2Micro.Cobra.Common;
+using Cobra.Communication;
+using Cobra.Common;
 using System.IO;
-//using O2Micro.Cobra.EM;
+//using Cobra.EM;
 
-namespace O2Micro.Cobra.Woodpecker8
+namespace Cobra.Woodpecker8
 {
     internal class DEMBehaviorManage
     {
