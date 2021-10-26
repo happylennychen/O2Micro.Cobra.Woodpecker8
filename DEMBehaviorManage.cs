@@ -29,7 +29,7 @@ namespace Cobra.Woodpecker8
             set { m_parent = value; }
         }
 
-        UInt16[] EFUSEUSRbuf = new UInt16[ElementDefine.EF_USR_BANK1_TOP - ElementDefine.EF_USR_BANK1_OFFSET + 1 + 1]; //bank1的长度，加上0x16    0x16放到EFUSEUSRbuf[4]里面去
+        byte[] EFUSEUSRbuf = new byte[ElementDefine.EF_USR_BANK1_TOP - ElementDefine.EF_USR_BANK1_OFFSET + 1 + 1]; //bank1的长度，加上0x16    0x16放到EFUSEUSRbuf[4]里面去
 
         private object m_lock = new object();
         private CCommunicateManager m_Interface = new CCommunicateManager();
@@ -1232,10 +1232,10 @@ namespace Cobra.Woodpecker8
         private void PrepareHexData()
         {
             //if (cfgFRZ == false)
-                parent.m_OpRegImg[ElementDefine.EF_CFG].val |= 0x80;    //Set Frozen bit in image
+            parent.m_OpRegImg[ElementDefine.EF_CFG].val |= 0x80;    //Set Frozen bit in image
 
             //if (bank1FRZ == false)
-                parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val |= 0x80;    //Set Frozen bit in image
+            parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val |= 0x80;    //Set Frozen bit in image
         }
 
         private byte WritingBank1Or2 = 0;   //bank1
@@ -1243,8 +1243,6 @@ namespace Cobra.Woodpecker8
         private UInt32 Download(ref TASKMessage msg, List<byte> efusebindata, bool isWithPowerControl)
         {
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-
-            PrepareHexData();
 
             ret = SetWorkMode(ElementDefine.WORK_MODE.PROGRAM);
             if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -1257,6 +1255,7 @@ namespace Cobra.Woodpecker8
                 if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                     return ret;
             }
+            LoadEFRegImgFromEFUSEBin(msg.sm.efusebindata);
 
             byte offset = 0;
             if (cfgFRZ == true)
@@ -1269,24 +1268,7 @@ namespace Cobra.Woodpecker8
             else
             {
                 byte address = 0x16;
-
-#if debug
-                ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-#else
-                ret = parent.m_OpRegImg[address].err;
-#endif
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                {
-                    return ret;
-                }
-
-#if debug
-                EFUSEUSRbuf[address] = 0;
-#else
-                EFUSEUSRbuf[4] = parent.m_OpRegImg[address].val;
-#endif
-                ret = WriteByte(address, (byte)parent.m_OpRegImg[address].val);
-                parent.m_OpRegImg[address].err = ret;
+                ret = WriteByte(address, EFUSEUSRbuf[4]);
                 if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                 {
                     return ret;
@@ -1313,23 +1295,7 @@ namespace Cobra.Woodpecker8
 
             for (byte badd = (byte)ElementDefine.EF_USR_BANK1_OFFSET; badd <= (byte)ElementDefine.EF_USR_BANK1_TOP; badd++)
             {
-#if debug
-                ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-#else
-                ret = parent.m_OpRegImg[badd].err;
-#endif
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                {
-                    return ret;
-                }
-
-#if debug
-                EFUSEUSRbuf[badd - ElementDefine.EF_USR_OFFSET] = 0;
-#else
-                EFUSEUSRbuf[badd - ElementDefine.EF_USR_BANK1_OFFSET] = parent.m_OpRegImg[badd].val;
-#endif
-                ret = WriteByte((byte)(badd + offset), (byte)parent.m_OpRegImg[badd].val);
-                parent.m_OpRegImg[(byte)(badd)].err = ret;
+                ret = WriteByte((byte)(badd + offset), EFUSEUSRbuf[badd - ElementDefine.EF_USR_BANK1_OFFSET]);
                 if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                 {
                     return ret;
@@ -1341,12 +1307,11 @@ namespace Cobra.Woodpecker8
                     return ret;
                 }
             }
-            if (!isWithPowerControl)
+            if (isWithPowerControl)
             {
                 ret = PowerOff();
                 if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                     return ret;
-
             }
 
             ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
@@ -1358,23 +1323,14 @@ namespace Cobra.Woodpecker8
             return ret;
         }
 
-        private Dictionary<string, ushort> LoadEFRegImgFromEFUSEBin(List<byte> efusebindata)
-        {
-            Dictionary<string, ushort> output = new Dictionary<string, ushort>();
-            for (int i = 0; i < (ElementDefine.EF_USR_TOP - ElementDefine.EF_USR_OFFSET + 1); i++)
-            {
-                output.Add(efusebindata[i * 3].ToString("X2"), SharedFormula.MAKEWORD(efusebindata[i * 3 + 2], efusebindata[i * 3 + 1]));
-            }
-            return output;
-        }
 
-        private void WriteToEFUSEBuffer(Dictionary<string, ushort> EFRegImg)
+        private void LoadEFRegImgFromEFUSEBin(List<byte> efusebindata)
         {
-            foreach (var key in EFRegImg.Keys)
-            {
-                byte badd = Convert.ToByte(key, 16);
-                EFUSEUSRbuf[badd - (byte)ElementDefine.EF_USR_OFFSET] = EFRegImg[key];
-            }
+            EFUSEUSRbuf[0] = efusebindata[3];
+            EFUSEUSRbuf[1] = efusebindata[5];
+            EFUSEUSRbuf[2] = efusebindata[7];
+            EFUSEUSRbuf[3] = efusebindata[9];
+            EFUSEUSRbuf[4] = efusebindata[1];
         }
 
         private UInt32 ReadBackCheck()
