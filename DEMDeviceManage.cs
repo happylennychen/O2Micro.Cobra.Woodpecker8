@@ -12,11 +12,6 @@ namespace Cobra.Woodpecker8
     {
         #region Properties
 
-        public bool isAMTEnabled
-        {
-            get { return (m_busoption.GetATMElementbyGuid(AutomationElement.GUIDATMTestStart).dbValue > 0); }
-        }
-
         private double m_EtRx;
         internal double etrx
         {
