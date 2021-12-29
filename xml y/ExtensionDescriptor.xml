@@ -37,5 +37,10 @@
       </Process>
       <BinFileCheck SubTaskID="21"></BinFileCheck>
     </Button>
+    <Button Label = "Scan"      DBModuleName="Scan"      Name = "ScanV2"         PanelName ="Cobra.ScanPanel">
+      <ScanRate>
+        <Item>1S</Item>
+      </ScanRate>
+    </Button>
   </Part>
 </Root>

@@ -4633,6 +4633,17 @@
           <Group>OZ8978</Group>
           <Description>uvp_state</Description>
         </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>0</Order>
+          <NickName>uvp_state</NickName>
+          <LogName>uvp_state</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
+        </SFL>
       </Private>
     </Element>
     <Element Guid="0x00033501">
@@ -4663,6 +4674,17 @@
           <Write>false</Write>
           <Group>OZ8978</Group>
           <Description>ovp_state</Description>
+        </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>1</Order>
+          <NickName>ovp_state</NickName>
+          <LogName>ovp_state</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
         </SFL>
       </Private>
     </Element>
@@ -4695,6 +4717,17 @@
           <Group>OZ8978</Group>
           <Description>dotp_state</Description>
         </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>2</Order>
+          <NickName>dotp_state</NickName>
+          <LogName>dotp_state</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
+        </SFL>
       </Private>
     </Element>
     <Element Guid="0x00033503">
@@ -4725,6 +4758,17 @@
           <Write>false</Write>
           <Group>OZ8978</Group>
           <Description>cotp_state</Description>
+        </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>3</Order>
+          <NickName>cotp_state</NickName>
+          <LogName>cotp_state</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
         </SFL>
       </Private>
     </Element>
@@ -4757,6 +4801,17 @@
           <Group>OZ8978</Group>
           <Description>cutp_state</Description>
         </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>4</Order>
+          <NickName>cutp_state</NickName>
+          <LogName>cutp_state</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
+        </SFL>
       </Private>
     </Element>
     <Element Guid="0x00033505">
@@ -4787,6 +4842,17 @@
           <Write>false</Write>
           <Group>OZ8978</Group>
           <Description>cto_state</Description>
+        </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>5</Order>
+          <NickName>cto_state</NickName>
+          <LogName>cto_state</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
         </SFL>
       </Private>
     </Element>
@@ -5036,6 +5102,17 @@
           <Group>OZ8978</Group>
           <Description>uvp_flag</Description>
         </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>6</Order>
+          <NickName>uvp_flag</NickName>
+          <LogName>uvp_flag</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
+        </SFL>
       </Private>
     </Element>
     <Element Guid="0x00033801">
@@ -5066,6 +5143,17 @@
           <Write>true</Write>
           <Group>OZ8978</Group>
           <Description>ovp_flag</Description>
+        </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>7</Order>
+          <NickName>ovp_flag</NickName>
+          <LogName>ovp_flag</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
         </SFL>
       </Private>
     </Element>
@@ -5098,6 +5186,17 @@
           <Group>OZ8978</Group>
           <Description>dotp_flag</Description>
         </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>8</Order>
+          <NickName>dotp_flag</NickName>
+          <LogName>dotp_flag</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
+        </SFL>
       </Private>
     </Element>
     <Element Guid="0x00033803">
@@ -5128,6 +5227,17 @@
           <Write>true</Write>
           <Group>OZ8978</Group>
           <Description>cotp_flag</Description>
+        </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>9</Order>
+          <NickName>cotp_flag</NickName>
+          <LogName>cotp_flag</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
         </SFL>
       </Private>
     </Element>
@@ -5160,6 +5270,17 @@
           <Group>OZ8978</Group>
           <Description>cutp_flag</Description>
         </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>10</Order>
+          <NickName>cutp_flag</NickName>
+          <LogName>cutp_flag</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
+        </SFL>
       </Private>
     </Element>
     <Element Guid="0x00033805">
@@ -5191,6 +5312,17 @@
           <Group>OZ8978</Group>
           <Description>cto_flag</Description>
         </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>11</Order>
+          <NickName>cto_flag</NickName>
+          <LogName>cto_flag</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
+        </SFL>
       </Private>
     </Element>
     <Element Guid="0x00033807">
@@ -5221,6 +5353,17 @@
           <Write>true</Write>
           <Group>OZ8978</Group>
           <Description>i2c_timeout_flag</Description>
+        </SFL>
+        <SFL Name="Scan">
+          <Group>6</Group>
+          <Order>12</Order>
+          <NickName>i2c_timeout_flag</NickName>
+          <LogName>i2c_timeout_flag</LogName>
+          <Usability>false</Usability>
+          <DefValue>0</DefValue>
+          <MinValue>0</MinValue>
+          <MaxValue>1</MaxValue>
+          <Description></Description>
         </SFL>
       </Private>
     </Element>
