@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Cobra.Woodpecker8
 {
-    class DEMBehaviorManageBase
+    public class DEMBehaviorManageBase
     {
         //父对象保存
         private DEMDeviceManage m_parent;

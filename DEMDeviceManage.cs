@@ -136,11 +136,11 @@ namespace Cobra.Woodpecker8
             m_dem_bm_base.parent = this;
             m_dem_bm_base.dem_dm = new DEMDataManageBase(m_dem_bm_base);
             m_register_config_dem_bm.parent = this;
-            m_register_config_dem_bm.dem_dm = new RegisterConfigDEMDataManage(m_register_config_dem_bm);
+            m_register_config_dem_bm.dem_dm = new DEMDataManageBase(m_register_config_dem_bm);
             m_efuse_config_dem_bm.parent = this;
-            m_efuse_config_dem_bm.dem_dm = new RegisterConfigDEMDataManage(m_efuse_config_dem_bm);//共用
+            m_efuse_config_dem_bm.dem_dm = new DEMDataManageBase(m_efuse_config_dem_bm);//共用
             m_expert_dem_bm.parent = this;
-            m_expert_dem_bm.dem_dm = new ExpertDEMDataManage(m_expert_dem_bm);
+            m_expert_dem_bm.dem_dm = new DEMDataManageBase(m_expert_dem_bm);
             LibInfor.AssemblyRegister(Assembly.GetExecutingAssembly(), ASSEMBLY_TYPE.OCE); 
             LibErrorCode.UpdateDynamicalLibError(ref m_dynamicErrorLib_dic);
 

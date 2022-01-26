@@ -21,11 +21,11 @@ namespace Cobra.Woodpecker8
                         if (demparameterlist == null) return ret;
                         if (msg.task_parameterlist.parameterlist.Count < ElementDefine.EF_TOTAL_PARAMS)
                             return ElementDefine.IDS_ERR_DEM_ONE_PARAM_DISABLE;
-                        ret = SetWorkMode(ElementDefine.WORK_MODE.WRITE_MAP_CTRL);
+                        ret = GetRegisteInfor(ref msg);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
                         msg.percent = 40;
-                        ret = GetRegisteInfor(ref msg);
+                        ret = SetWorkMode(ElementDefine.WORK_MODE.WRITE_MAP_CTRL);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
                         msg.percent = 60;
@@ -43,7 +43,7 @@ namespace Cobra.Woodpecker8
                             msg.gm.message = "Reading bank2.";
                             msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                         }
-                        List<byte> OpReglist = SharedAPI.GenerateRegisterList(ref msg);
+                        List<byte> OpReglist = Utility.GenerateRegisterList(ref msg);
                         byte bdata = 0;
                         foreach (byte badd in OpReglist)
                         {
@@ -63,10 +63,10 @@ namespace Cobra.Woodpecker8
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
                         msg.percent = 80;
-                        ret = ConvertHexToPhysical(ref msg);
+                        ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
-                        ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
+                        ret = ConvertHexToPhysical(ref msg);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
                         break;
@@ -78,12 +78,55 @@ namespace Cobra.Woodpecker8
                         if (msg.task_parameterlist.parameterlist.Count < ElementDefine.EF_TOTAL_PARAMS)
                             return ElementDefine.IDS_ERR_DEM_ONE_PARAM_DISABLE;
 
-                        List<byte> OpReglist = SharedAPI.GenerateRegisterList(ref msg);
-                        ret = SafetyCheck(OpReglist);
+                        msg.percent = 30;
+                        ret = GetRegisteInfor(ref msg);
+                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                            return ret;
                         ret = SetWorkMode(ElementDefine.WORK_MODE.WRITE_MAP_CTRL);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
+                        msg.percent = 60;
+
                         byte offset = 0;
+                        List<byte> OpReglist = Utility.GenerateRegisterList(ref msg);
+                        byte bdata = 0;
+                        #region Read
+                        if (isOPBank2Empty() == true)
+                        {
+                            offset = 0;
+                            msg.gm.message = "Reading bank1.";
+                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                        }
+                        else
+                        {
+                            offset = 4;
+                            msg.gm.message = "Reading bank2.";
+                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                        }
+                        foreach (byte badd in OpReglist)
+                        {
+                            if (badd == 0x16 || badd == 0x26)
+                            {
+                                ret = ReadByte(badd, ref bdata);
+                                parent.m_OpRegImg[badd].err = ret;
+                                parent.m_OpRegImg[badd].val = (UInt16)bdata;
+                            }
+                            else
+                            {
+                                ret = ReadByte((byte)(badd + offset), ref bdata);
+                                parent.m_OpRegImg[(byte)(badd)].err = ret;
+                                parent.m_OpRegImg[(byte)(badd)].val = (UInt16)bdata;
+                            }
+                        }
+                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                            return ret;
+                        #endregion
+                        msg.percent = 50;
+                        ret = ConvertPhysicalToHex(ref msg);
+                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                            return ret;
+                        #region Write
+                        ret = SafetyCheck(OpReglist);
                         if (isOPConfigEmpty() == false)
                         {
                             //System.Windows.Forms.MessageBox.Show("Config register 0x26 is frozen. Skip to program it.");
@@ -123,29 +166,38 @@ namespace Cobra.Woodpecker8
                         }
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
-                        ///////////////////////////////////////////////
-                        if (isOPFrozen())
+                        #endregion
+                        #region Read
+                        if (isOPBank2Empty() == true)
                         {
-                            ret = ElementDefine.IDS_ERR_DEM_FROZEN;
-                            return ret;
+                            offset = 0;
+                            msg.gm.message = "Reading bank1.";
+                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                         }
-                        msg.percent = 30;
-                        ret = GetRegisteInfor(ref msg);
+                        else
+                        {
+                            offset = 4;
+                            msg.gm.message = "Reading bank2.";
+                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                        }
+                        foreach (byte badd in OpReglist)
+                        {
+                            if (badd == 0x16 || badd == 0x26)
+                            {
+                                ret = ReadByte(badd, ref bdata);
+                                parent.m_OpRegImg[badd].err = ret;
+                                parent.m_OpRegImg[badd].val = (UInt16)bdata;
+                            }
+                            else
+                            {
+                                ret = ReadByte((byte)(badd + offset), ref bdata);
+                                parent.m_OpRegImg[(byte)(badd)].err = ret;
+                                parent.m_OpRegImg[(byte)(badd)].val = (UInt16)bdata;
+                            }
+                        }
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
-                        msg.percent = 40;
-                        ret = Read(ref msg);
-                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                            return ret;
-                        msg.percent = 50;
-                        ret = ConvertPhysicalToHex(ref msg);
-                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                            return ret;
-                        msg.percent = 60;
-                        ret = Write(ref msg);
-                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                            return ret;
-                        msg.percent = 80;
+                        #endregion
                         ret = ConvertHexToPhysical(ref msg);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                             return ret;
