@@ -128,17 +128,21 @@ namespace Cobra.Woodpecker8
 
         internal enum COMMAND : ushort
         {
-            FROZEN_BIT_CHECK_PC = 9,
-            FROZEN_BIT_CHECK = 10,
-            DIRTY_CHIP_CHECK_PC = 11,
-            DIRTY_CHIP_CHECK = 12,
-            DOWNLOAD_PC = 13,
-            DOWNLOAD = 14,
-            READ_BACK_CHECK_PC = 15,
-            READ_BACK_CHECK = 16,
+            MP_FROZEN_BIT_CHECK_PC = 9,
+            MP_FROZEN_BIT_CHECK = 10,
+            MP_DIRTY_CHIP_CHECK_PC = 11,
+            MP_DIRTY_CHIP_CHECK = 12,
+            MP_DOWNLOAD_PC = 13,
+            MP_DOWNLOAD = 14,
+            MP_READ_BACK_CHECK_PC = 15,
+            MP_READ_BACK_CHECK = 16,
             //GET_EFUSE_HEX_DATA = 17,  //不再使用此命令，与OZ77系列统一
-            SAVE_EFUSE_HEX = 18,
-            BIN_FILE_CHECK = 21                   //检查bin文件的合法性
+            EFUSE_CONFIG_SAVE_EFUSE_HEX = 18,
+            MP_BIN_FILE_CHECK = 21,                   //检查bin文件的合法性
+            REGISTER_CONFIG_READ = 22,
+            REGISTER_CONFIG_WRITE = 23,
+            EFUSE_CONFIG_READ = 24,
+            EFUSE_CONFIG_WRITE = 25
         }
 
     }

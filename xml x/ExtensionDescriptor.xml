@@ -14,6 +14,10 @@
       <Layout Name ="layout" bOrder ="true">
         <Button Name ="EraseBtn" IsEnable ="False" Visibility="Collapsed"/>
       </Layout>
+      <SubTask>
+        <Read>22</Read>
+        <Write>23</Write>
+      </SubTask>
     </Button>
     <Button Label = "EFUSE Config" Name ="DeviceConfig"   PanelName ="Cobra.DeviceConfigurationPanel">
       <Layout Name ="layout" bOrder ="true">
@@ -21,6 +25,8 @@
       </Layout>
       <SubTask>
         <SaveHex>18</SaveHex>
+        <Read>24</Read>
+        <Write>25</Write>
       </SubTask>
     </Button>
     <Button Label = "Mass Production" DBModuleName="Production"  Name = "Production" ShowVerify="False" ShowConfig="True" ShowHEX="False"  PanelName ="Cobra.ProductionPanel">

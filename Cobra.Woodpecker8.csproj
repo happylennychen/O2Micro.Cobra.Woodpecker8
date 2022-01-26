@@ -43,7 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DEMBehaviorManage.cs" />
+    <Compile Include="DEMBehaviorManage\RegisterConfigDEMBehaviorManage.cs" />
+    <Compile Include="DEMBehaviorManage\ExpertDEMBehaviorManage.cs" />
+    <Compile Include="DEMBehaviorManage\EFUSEConfigDEMBehaviorManage.cs" />
+    <Compile Include="DEMBehaviorManage\DEMBehaviorManageBase.cs" />
     <Compile Include="DEMDataManage.cs" />
+    <Compile Include="DEMDataManage\DEMDataManageBase.cs" />
+    <Compile Include="DEMDataManage\ExpertDEMDataManage.cs" />
+    <Compile Include="DEMDataManage\RegisterConfigDEMDataManage.cs" />
     <Compile Include="DEMDeviceManage.cs" />
     <Compile Include="ElementDefine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +75,7 @@
       <Name>Cobra.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

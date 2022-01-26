@@ -545,30 +545,6 @@ namespace Cobra.Woodpecker8
         public UInt32 SafetyCheck(List<byte> OpReglist)
         {
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-            /*byte tmp = 0;
-            
-            if (OpReglist.Contains((byte)ElementDefine.EF_USR_BANK1_TOP) && OpReglist.Contains((byte)ElementDefine.EF_USR_BANK2_TOP))
-            {
-            }
-            else if (OpReglist.Contains((byte)ElementDefine.EF_USR_BANK1_TOP) && !OpReglist.Contains((byte)ElementDefine.EF_USR_BANK2_TOP))
-            {
-                ret = ReadByte((byte)ElementDefine.EF_USR_BANK2_TOP, ref tmp);
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                    return ret;
-                parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].val = tmp;
-                parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].err = ret;
-            }
-            else if (!OpReglist.Contains((byte)ElementDefine.EF_USR_BANK1_TOP) && OpReglist.Contains((byte)ElementDefine.EF_USR_BANK2_TOP))
-            {
-                ret = ReadByte((byte)ElementDefine.EF_USR_BANK1_TOP, ref tmp);
-                if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
-                    return ret;
-                parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val = tmp;
-                parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].err = ret;
-            }
-            else
-                return ret;
-            */
             if ((parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].val & 0x80) == 0x80
                 && parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].err == LibErrorCode.IDS_ERR_SUCCESSFUL
                 && (parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val & 0x80) == 0x00
@@ -954,7 +930,7 @@ namespace Cobra.Woodpecker8
             switch ((ElementDefine.COMMAND)msg.sub_task)
             {
 
-                case ElementDefine.COMMAND.FROZEN_BIT_CHECK_PC:
+                case ElementDefine.COMMAND.MP_FROZEN_BIT_CHECK_PC:
                     ret = PowerOn();
                     if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                         return ret;
@@ -968,13 +944,13 @@ namespace Cobra.Woodpecker8
                         return ret;
                     break;
 
-                case ElementDefine.COMMAND.FROZEN_BIT_CHECK:
+                case ElementDefine.COMMAND.MP_FROZEN_BIT_CHECK:
                     ret = FrozenBitCheck();
                     if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                         return ret;
                     break;
 
-                case ElementDefine.COMMAND.DIRTY_CHIP_CHECK_PC:
+                case ElementDefine.COMMAND.MP_DIRTY_CHIP_CHECK_PC:
                     ret = PowerOn();
                     if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                         return ret;
@@ -988,13 +964,13 @@ namespace Cobra.Woodpecker8
                         return ret;
                     break;
 
-                case ElementDefine.COMMAND.DIRTY_CHIP_CHECK:
+                case ElementDefine.COMMAND.MP_DIRTY_CHIP_CHECK:
                     ret = DirtyChipCheck();
                     if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
                         return ret;
                     break;
 
-                case ElementDefine.COMMAND.DOWNLOAD_PC:
+                case ElementDefine.COMMAND.MP_DOWNLOAD_PC:
                     {
                         ret = Download(ref msg, msg.sm.efusebindata, true);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -1005,7 +981,7 @@ namespace Cobra.Woodpecker8
                         break;
                     }
 
-                case ElementDefine.COMMAND.DOWNLOAD:
+                case ElementDefine.COMMAND.MP_DOWNLOAD:
                     {
                         ret = Download(ref msg, msg.sm.efusebindata, false);
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -1015,7 +991,7 @@ namespace Cobra.Woodpecker8
 #endif
                         break;
                     }
-                case ElementDefine.COMMAND.READ_BACK_CHECK_PC:
+                case ElementDefine.COMMAND.MP_READ_BACK_CHECK_PC:
                     {
                         ret = PowerOn();
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -1030,7 +1006,7 @@ namespace Cobra.Woodpecker8
                             return ret;
                         break;
                     }
-                case ElementDefine.COMMAND.READ_BACK_CHECK:
+                case ElementDefine.COMMAND.MP_READ_BACK_CHECK:
                     {
                         ret = ReadBackCheck();
                         if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
@@ -1044,7 +1020,7 @@ namespace Cobra.Woodpecker8
                             return ret;
                         break;
                     }*/
-                case ElementDefine.COMMAND.SAVE_EFUSE_HEX:
+                case ElementDefine.COMMAND.EFUSE_CONFIG_SAVE_EFUSE_HEX:
                     {
                         InitEfuseData();
                         ret = ConvertPhysicalToHexClean(ref msg);
@@ -1077,7 +1053,7 @@ namespace Cobra.Woodpecker8
                         }
                         break;
                     }
-                case ElementDefine.COMMAND.BIN_FILE_CHECK:
+                case ElementDefine.COMMAND.MP_BIN_FILE_CHECK:
                     {
                         string binFileName = msg.sub_task_json;
 

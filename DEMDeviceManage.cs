@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Reflection;
 using Cobra.Common;
+using Cobra.Communication;
 
 namespace Cobra.Woodpecker8
 {
@@ -12,7 +13,6 @@ namespace Cobra.Woodpecker8
     {
         #region Properties
 
-        private double m_EtRx;
         internal double etrx
         {
             get
@@ -20,9 +20,7 @@ namespace Cobra.Woodpecker8
                 Parameter param = tempParamlist.GetParameterByGuid(ElementDefine.TpETRx);
                 if (param == null) return 0.0;
                 else return param.phydata;
-                //return m_PullupR; 
             }
-            //set { m_PullupR = value; }
         }
 
         internal ParamContainer EFParamlist = null;
@@ -34,13 +32,16 @@ namespace Cobra.Woodpecker8
         internal ParamListContainer m_Section_ParamlistContainer = null;
         internal ParamListContainer m_SFLs_ParamlistContainer = null;
 
-        //internal COBRA_HWMode_Reg[] m_EFRegImg = new COBRA_HWMode_Reg[ElementDefine.EF_MEMORY_SIZE + ElementDefine.EF_MEMORY_OFFSET];
-        //internal COBRA_HWMode_Reg[] m_EFRegImgEX = new COBRA_HWMode_Reg[ElementDefine.EF_MEMORY_SIZE];
         internal COBRA_HWMode_Reg[] m_OpRegImg = new COBRA_HWMode_Reg[ElementDefine.OP_MEMORY_SIZE];
         private Dictionary<UInt32, COBRA_HWMode_Reg[]> m_HwMode_RegList = new Dictionary<UInt32, COBRA_HWMode_Reg[]>();
 
-        private DEMBehaviorManage m_dem_bm = new DEMBehaviorManage();
-        private DEMDataManage m_dem_dm = new DEMDataManage();
+
+        private DEMBehaviorManageBase m_dem_bm_base = new DEMBehaviorManageBase();
+        private EFUSEConfigDEMBehaviorManage m_efuse_config_dem_bm = new EFUSEConfigDEMBehaviorManage();
+        private RegisterConfigDEMBehaviorManage m_register_config_dem_bm = new RegisterConfigDEMBehaviorManage();
+        private ExpertDEMBehaviorManage m_expert_dem_bm = new ExpertDEMBehaviorManage();
+
+        public CCommunicateManager m_Interface = new CCommunicateManager();
 
         public Parameter pE_BAT_TYPE = new Parameter();
         public Parameter pE_DOT_TH = new Parameter();
@@ -67,7 +68,7 @@ namespace Cobra.Woodpecker8
             {ElementDefine.IDS_ERR_DEM_ONE_PARAM_DISABLE,"Single parameter opeartion is not supported."},
         };
         #endregion
-
+        #region other functions
         private void InitParameters()
         {
             ParamContainer pc = m_Section_ParamlistContainer.GetParameterListByGuid(ElementDefine.OperationElement);
@@ -84,29 +85,13 @@ namespace Cobra.Woodpecker8
             pO_DOT_E = pc.GetParameterByGuid(ElementDefine.O_DOT_E);
         }
 
-        public void Physical2Hex(ref Parameter param)
-        {
-            m_dem_dm.Physical2Hex(ref param);
-        }
-
-        public void Hex2Physical(ref Parameter param)
-        {
-            m_dem_dm.Hex2Physical(ref param);
-        }
-
         private void SectionParameterListInit(ref ParamListContainer devicedescriptionlist)
         {
             tempParamlist = devicedescriptionlist.GetParameterListByGuid(ElementDefine.TemperatureElement);
             if (tempParamlist == null) return;
 
-            //EFParamlist = devicedescriptionlist.GetParameterListByGuid(ElementDefine.EFUSEElement);
-            //if (EFParamlist == null) return;
-
             OPParamlist = devicedescriptionlist.GetParameterListByGuid(ElementDefine.OperationElement);
             if (OPParamlist == null) return;
-
-            //pullupR = tempParamlist.GetParameterByGuid(ElementDefine.TpETPullupR).phydata;
-            //itv0 = tempParamlist.GetParameterByGuid(ElementDefine.TpITSlope).phydata;
         }
 
         public void ModifyTemperatureConfig(Parameter p, bool bConvert)
@@ -129,11 +114,7 @@ namespace Cobra.Woodpecker8
                 m_OpRegImg[i].err = LibErrorCode.IDS_ERR_BUS_DATA_PEC_ERROR;
             }
         }
-
-        public UInt32 WriteToRegImg(Parameter p, UInt16 wVal)
-        {
-            return m_dem_dm.WriteToRegImg(p, wVal);
-        }
+        #endregion
         #region 接口实现
         public void Init(ref BusOptions busoptions, ref ParamListContainer deviceParamlistContainer, ref ParamListContainer sflParamlistContainer)
         {
@@ -150,13 +131,21 @@ namespace Cobra.Woodpecker8
             InitialImgReg();
             InitParameters();
 
-            m_dem_bm.Init(this);
-            m_dem_dm.Init(this);
+            CreateInterface();
+
+            m_dem_bm_base.parent = this;
+            m_dem_bm_base.dem_dm = new DEMDataManageBase(m_dem_bm_base);
+            m_register_config_dem_bm.parent = this;
+            m_register_config_dem_bm.dem_dm = new RegisterConfigDEMDataManage(m_register_config_dem_bm);
+            m_efuse_config_dem_bm.parent = this;
+            m_efuse_config_dem_bm.dem_dm = new RegisterConfigDEMDataManage(m_efuse_config_dem_bm);//共用
+            m_expert_dem_bm.parent = this;
+            m_expert_dem_bm.dem_dm = new ExpertDEMDataManage(m_expert_dem_bm);
             LibInfor.AssemblyRegister(Assembly.GetExecutingAssembly(), ASSEMBLY_TYPE.OCE); 
             LibErrorCode.UpdateDynamicalLibError(ref m_dynamicErrorLib_dic);
 
         }
-
+        #region 
         public bool EnumerateInterface()
         {
             return m_dem_bm.EnumerateInterface();
@@ -171,20 +160,25 @@ namespace Cobra.Woodpecker8
         {
             return m_dem_bm.DestroyInterface();
         }
-
         public void UpdataDEMParameterList(Parameter p)
         {
-            m_dem_dm.UpdateEpParamItemList(p);
+            if ((p.guid & 0x00001000) == 0x00001000)
+                m_efuse_config_dem_bm.dem_dm.UpdateEpParamItemList(p);
+            else if ((p.guid & 0x00002000) == 0x00002000)
+                m_register_config_dem_bm.dem_dm.UpdateEpParamItemList(p);
         }
 
         public UInt32 GetDeviceInfor(ref DeviceInfor deviceinfor)
         {
-            return m_dem_bm.GetDeviceInfor(ref deviceinfor);
+#if debug
+            return LibErrorCode.IDS_ERR_SUCCESSFUL;
+#else
+            return m_dem_bm_base.GetDeviceInfor(ref deviceinfor);
+#endif
         }
 
         public UInt32 Erase(ref TASKMessage bgworker)
         {
-            //return m_dem_bm.EraseEEPROM(ref bgworker);
             return LibErrorCode.IDS_ERR_SUCCESSFUL;
         }
 
@@ -195,42 +189,80 @@ namespace Cobra.Woodpecker8
 
         public UInt32 Command(ref TASKMessage bgworker)
         {
-            return m_dem_bm.Command(ref bgworker);
+            UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
+
+            switch ((ElementDefine.COMMAND)bgworker.sub_task)
+            {
+                case ElementDefine.COMMAND.REGISTER_CONFIG_WRITE:
+                case ElementDefine.COMMAND.REGISTER_CONFIG_READ:
+                    {
+                        ret = m_register_config_dem_bm.Command(ref bgworker);
+                        break;
+                    }
+                case ElementDefine.COMMAND.EFUSE_CONFIG_WRITE:
+                case ElementDefine.COMMAND.EFUSE_CONFIG_READ:
+                case ElementDefine.COMMAND.EFUSE_CONFIG_SAVE_EFUSE_HEX:
+                    {
+                        ret = m_efuse_config_dem_bm.Command(ref bgworker);
+                        break;
+                    }
+            }
+            return ret;
         }
 
         public UInt32 Read(ref TASKMessage bgworker)
         {
-            return m_dem_bm.Read(ref bgworker);
+            return m_dem_bm_base.Read(ref bgworker);
         }
 
         public UInt32 Write(ref TASKMessage bgworker)
         {
-            return m_dem_bm.Write(ref bgworker);
+            return m_dem_bm_base.Write(ref bgworker);
         }
 
         public UInt32 BitOperation(ref TASKMessage bgworker)
         {
-            return m_dem_bm.BitOperation(ref bgworker);
+            return m_dem_bm_base.BitOperation(ref bgworker);
         }
 
         public UInt32 ConvertHexToPhysical(ref TASKMessage bgworker)
         {
-            return m_dem_bm.ConvertHexToPhysical(ref bgworker);
+            if (bgworker.gm.sflname == "Expert")
+                return m_expert_dem_bm.ConvertHexToPhysical(ref bgworker);
+            else if (bgworker.gm.sflname == "Register Config")
+                return m_register_config_dem_bm.ConvertHexToPhysical(ref bgworker);
+            else if (bgworker.gm.sflname == "EFUSE Config")
+                return m_efuse_config_dem_bm.ConvertHexToPhysical(ref bgworker);
+            else
+                return m_dem_bm_base.ConvertHexToPhysical(ref bgworker);
         }
 
         public UInt32 ConvertPhysicalToHex(ref TASKMessage bgworker)
         {
-            return m_dem_bm.ConvertPhysicalToHex(ref bgworker);
+            if (bgworker.gm.sflname == "Expert")
+                return m_expert_dem_bm.ConvertPhysicalToHex(ref bgworker);
+            else if (bgworker.gm.sflname == "Register Config")
+                return m_register_config_dem_bm.ConvertPhysicalToHex(ref bgworker);
+            else if (bgworker.gm.sflname == "EFUSE Config")
+                return m_efuse_config_dem_bm.ConvertPhysicalToHex(ref bgworker);
+            else
+                return m_dem_bm_base.ConvertPhysicalToHex(ref bgworker);
         }
 
         public UInt32 GetSystemInfor(ref TASKMessage bgworker)
         {
-            return m_dem_bm.GetSystemInfor(ref bgworker);
+#if debug
+            return LibErrorCode.IDS_ERR_SUCCESSFUL;
+#endif
+            return m_dem_bm_base.GetSystemInfor(ref bgworker);
         }
 
         public UInt32 GetRegisteInfor(ref TASKMessage bgworker)
         {
-            return m_dem_bm.GetRegisteInfor(ref bgworker);
+#if debug
+            return LibErrorCode.IDS_ERR_SUCCESSFUL;
+#endif
+            return m_dem_bm_base.GetRegisteInfor(ref bgworker);
         }
         #endregion
     }
