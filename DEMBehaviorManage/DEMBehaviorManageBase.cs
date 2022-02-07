@@ -321,7 +321,7 @@ namespace Cobra.Woodpecker8
             ParamContainer demparameterlist = msg.task_parameterlist;
             if (demparameterlist == null) return ret;
 
-            OpReglist = SharedAPI.GenerateRegisterList(ref msg);
+            OpReglist = Utility.GenerateRegisterList(ref msg);
             if (OpReglist == null)
                 return ret;
 
@@ -341,7 +341,7 @@ namespace Cobra.Woodpecker8
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
             List<byte> OpReglist = new List<byte>();
 
-            OpReglist = SharedAPI.GenerateRegisterList(ref msg);
+            OpReglist = Utility.GenerateRegisterList(ref msg);
             if (OpReglist == null)
                 return ret;
             foreach (byte badd in OpReglist)
@@ -361,13 +361,13 @@ namespace Cobra.Woodpecker8
             return ret;
         }
 
-        public UInt32 ConvertHexToPhysical(ref TASKMessage msg) //Scan 把这里污染了
+        public UInt32 ConvertHexToPhysical(ref TASKMessage msg)
         {
             Parameter param = null;
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
 
             List<Parameter> OpParamList = new List<Parameter>();
-            OpParamList = SharedAPI.GenerateParameterList(ref msg);
+            OpParamList = Utility.GenerateParameterList(ref msg);
             if (OpParamList == null)
                 return ret;
 
@@ -387,7 +387,7 @@ namespace Cobra.Woodpecker8
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
 
             List<Parameter> OpParamList = new List<Parameter>();
-            OpParamList = SharedAPI.GenerateParameterList(ref msg);
+            OpParamList = Utility.GenerateParameterList(ref msg);
             if (OpParamList == null)
                 return ret;
 
@@ -445,6 +445,19 @@ namespace Cobra.Woodpecker8
         {
             UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
 
+            return ret;
+        }
+
+        public UInt32 SafetyCheck(List<byte> OpReglist)
+        {
+            UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
+            if ((parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].val & 0x80) == 0x80
+                && parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].err == LibErrorCode.IDS_ERR_SUCCESSFUL
+                && (parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val & 0x80) == 0x00
+                && parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].err == LibErrorCode.IDS_ERR_SUCCESSFUL)
+            {
+                ret = ElementDefine.IDS_ERR_DEM_BLOCK;
+            }
             return ret;
         }
         #endregion

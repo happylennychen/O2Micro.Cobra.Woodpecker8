@@ -238,19 +238,6 @@ namespace Cobra.Woodpecker8
             else
                 return true;
         }
-
-        public UInt32 SafetyCheck(List<byte> OpReglist)
-        {
-            UInt32 ret = LibErrorCode.IDS_ERR_SUCCESSFUL;
-            if ((parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].val & 0x80) == 0x80
-                && parent.m_OpRegImg[ElementDefine.EF_USR_BANK2_TOP].err == LibErrorCode.IDS_ERR_SUCCESSFUL
-                && (parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].val & 0x80) == 0x00
-                && parent.m_OpRegImg[ElementDefine.EF_USR_BANK1_TOP].err == LibErrorCode.IDS_ERR_SUCCESSFUL)
-            {
-                ret = ElementDefine.IDS_ERR_DEM_BLOCK;
-            }
-            return ret;
-        }
         #endregion
     }
 }

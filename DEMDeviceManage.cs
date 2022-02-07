@@ -40,6 +40,7 @@ namespace Cobra.Woodpecker8
         private EFUSEConfigDEMBehaviorManage m_efuse_config_dem_bm = new EFUSEConfigDEMBehaviorManage();
         private RegisterConfigDEMBehaviorManage m_register_config_dem_bm = new RegisterConfigDEMBehaviorManage();
         private ExpertDEMBehaviorManage m_expert_dem_bm = new ExpertDEMBehaviorManage();
+        private MassProductionDEMBehaviorManage m_mass_production_dem_bm = new MassProductionDEMBehaviorManage();
 
         public CCommunicateManager m_Interface = new CCommunicateManager();
 
@@ -141,24 +142,28 @@ namespace Cobra.Woodpecker8
             m_efuse_config_dem_bm.dem_dm = new DEMDataManageBase(m_efuse_config_dem_bm);//共用
             m_expert_dem_bm.parent = this;
             m_expert_dem_bm.dem_dm = new DEMDataManageBase(m_expert_dem_bm);
+            m_mass_production_dem_bm.parent = this;
+            m_mass_production_dem_bm.dem_dm = new DEMDataManageBase(m_mass_production_dem_bm);
             LibInfor.AssemblyRegister(Assembly.GetExecutingAssembly(), ASSEMBLY_TYPE.OCE); 
             LibErrorCode.UpdateDynamicalLibError(ref m_dynamicErrorLib_dic);
 
         }
-        #region 
         public bool EnumerateInterface()
         {
-            return m_dem_bm.EnumerateInterface();
+            return m_Interface.FindDevices(ref m_busoption);
         }
 
         public bool CreateInterface()
         {
-            return m_dem_bm.CreateInterface();
+            bool bdevice = EnumerateInterface();
+            if (!bdevice) return false;
+
+            return m_Interface.OpenDevice(ref m_busoption);
         }
 
         public bool DestroyInterface()
         {
-            return m_dem_bm.DestroyInterface();
+            return m_Interface.CloseDevice();
         }
         public void UpdataDEMParameterList(Parameter p)
         {
@@ -206,6 +211,19 @@ namespace Cobra.Woodpecker8
                         ret = m_efuse_config_dem_bm.Command(ref bgworker);
                         break;
                     }
+                case ElementDefine.COMMAND.MP_BIN_FILE_CHECK:
+                case ElementDefine.COMMAND.MP_DIRTY_CHIP_CHECK:
+                case ElementDefine.COMMAND.MP_DIRTY_CHIP_CHECK_PC:
+                case ElementDefine.COMMAND.MP_DOWNLOAD:
+                case ElementDefine.COMMAND.MP_DOWNLOAD_PC:
+                case ElementDefine.COMMAND.MP_FROZEN_BIT_CHECK:
+                case ElementDefine.COMMAND.MP_FROZEN_BIT_CHECK_PC:
+                case ElementDefine.COMMAND.MP_READ_BACK_CHECK:
+                case ElementDefine.COMMAND.MP_READ_BACK_CHECK_PC:
+                    {
+                        ret = m_mass_production_dem_bm.Command(ref bgworker);
+                        break;
+                    }
             }
             return ret;
         }
@@ -227,13 +245,13 @@ namespace Cobra.Woodpecker8
 
         public UInt32 ConvertHexToPhysical(ref TASKMessage bgworker)
         {
-            if (bgworker.gm.sflname == "Expert")
-                return m_expert_dem_bm.ConvertHexToPhysical(ref bgworker);
-            else if (bgworker.gm.sflname == "Register Config")
-                return m_register_config_dem_bm.ConvertHexToPhysical(ref bgworker);
-            else if (bgworker.gm.sflname == "EFUSE Config")
-                return m_efuse_config_dem_bm.ConvertHexToPhysical(ref bgworker);
-            else
+            //if (bgworker.gm.sflname == "Expert")
+            //    return m_expert_dem_bm.ConvertHexToPhysical(ref bgworker);
+            //else if (bgworker.gm.sflname == "Register Config")
+            //    return m_register_config_dem_bm.ConvertHexToPhysical(ref bgworker);
+            //else if (bgworker.gm.sflname == "EFUSE Config")
+            //    return m_efuse_config_dem_bm.ConvertHexToPhysical(ref bgworker);
+            //else
                 return m_dem_bm_base.ConvertHexToPhysical(ref bgworker);
         }
 

@@ -12,7 +12,7 @@ namespace Cobra.Woodpecker8
     /// --------  -------   --------   -------
     ///    保留   参数类型  寄存器地址   起始位
     /// </summary>
-    internal class ElementDefine
+    public class ElementDefine
     {
         #region Chip Constant
         internal const UInt16 EF_MEMORY_SIZE = 0x10;
@@ -119,7 +119,7 @@ namespace Cobra.Woodpecker8
         internal const UInt32 IDS_ERR_DEM_ONE_PARAM_DISABLE = LibErrorCode.IDS_ERR_SECTION_DYNAMIC_DEM + 0x0007;
         #endregion
 
-        internal enum WORK_MODE : ushort
+        public enum WORK_MODE : ushort
         {
             NORMAL = 0,
             WRITE_MAP_CTRL = 0x01,

@@ -18,10 +18,10 @@ namespace Cobra.Woodpecker8
             switch (pDOT_E.guid)
             {
                 case ElementDefine.E_DOT_E:
-                    pDOT = parent.pE_DOT_TH;
+                    pDOT = parent.parent.pE_DOT_TH;
                     break;
                 case ElementDefine.O_DOT_E:
-                    pDOT = parent.pO_DOT_TH;
+                    pDOT = parent.parent.pO_DOT_TH;
                     break;
             }
 
@@ -61,10 +61,10 @@ namespace Cobra.Woodpecker8
             switch (pDOT.guid)
             {
                 case ElementDefine.O_DOT_TH:
-                    pDOT_E = parent.pO_DOT_TH;
+                    pDOT_E = parent.parent.pO_DOT_TH;
                     break;
                 case ElementDefine.E_DOT_TH:
-                    pDOT_E = parent.pE_DOT_TH;
+                    pDOT_E = parent.parent.pE_DOT_TH;
                     break;
             }
             if (pDOT_E.phydata == 0)
@@ -82,10 +82,10 @@ namespace Cobra.Woodpecker8
             switch (pOVP_TH.guid)
             {
                 case ElementDefine.O_OVP_TH:
-                    pBAT_TYPE = parent.pO_BAT_TYPE;
+                    pBAT_TYPE = parent.parent.pO_BAT_TYPE;
                     break;
                 case ElementDefine.E_OVP_TH:
-                    pBAT_TYPE = parent.pE_BAT_TYPE;
+                    pBAT_TYPE = parent.parent.pE_BAT_TYPE;
                     break;
             }
             if (pBAT_TYPE.phydata == 0)
@@ -112,12 +112,12 @@ namespace Cobra.Woodpecker8
             switch (pOVR.guid)
             {
                 case ElementDefine.O_OVR_HYS:
-                    pBAT_TYPE = parent.pO_BAT_TYPE;
-                    pOVP = parent.pO_OVP_TH;
+                    pBAT_TYPE = parent.parent.pO_BAT_TYPE;
+                    pOVP = parent.parent.pO_OVP_TH;
                     break;
                 case ElementDefine.E_OVR_HYS:
-                    pBAT_TYPE = parent.pE_BAT_TYPE;
-                    pOVP = parent.pE_OVP_TH;
+                    pBAT_TYPE = parent.parent.pE_BAT_TYPE;
+                    pOVP = parent.parent.pE_OVP_TH;
                     break;
             }
             if (pBAT_TYPE.phydata == 0)
@@ -162,10 +162,10 @@ namespace Cobra.Woodpecker8
             switch (pUVR.guid)
             {
                 case ElementDefine.O_UVR_HYS:
-                    pUVP = parent.pO_UVP_TH;
+                    pUVP = parent.parent.pO_UVP_TH;
                     break;
                 case ElementDefine.E_UVR_HYS:
-                    pUVP = parent.pE_UVP_TH;
+                    pUVP = parent.parent.pE_UVP_TH;
                     break;
             }
             int num = 16 - (int)pUVP.phydata;
@@ -271,10 +271,10 @@ namespace Cobra.Woodpecker8
                     switch (p.guid)
                     {
                         case ElementDefine.O_DOT_TH:
-                            pDOT_E = parent.pO_DOT_E;
+                            pDOT_E = parent.parent.pO_DOT_E;
                             break;
                         case ElementDefine.E_DOT_TH:
-                            pDOT_E = parent.pE_DOT_E;
+                            pDOT_E = parent.parent.pE_DOT_E;
                             break;
                     }
                     if (pDOT_E.phydata == 1)    //Disable
