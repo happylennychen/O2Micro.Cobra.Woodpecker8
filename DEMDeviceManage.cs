@@ -95,17 +95,6 @@ namespace Cobra.Woodpecker8
             if (OPParamlist == null) return;
         }
 
-        public void ModifyTemperatureConfig(Parameter p, bool bConvert)
-        {
-            //bConvert为真 physical ->hex;假 hex->physical;
-            Parameter tmp = tempParamlist.GetParameterByGuid(p.guid);
-            if (tmp == null) return;
-            if (bConvert)
-                tmp.phydata = p.phydata;
-            else
-                p.phydata = tmp.phydata;
-        }
-
         private void InitialImgReg()
         {
             for (byte i = 0; i < ElementDefine.OP_MEMORY_SIZE; i++)

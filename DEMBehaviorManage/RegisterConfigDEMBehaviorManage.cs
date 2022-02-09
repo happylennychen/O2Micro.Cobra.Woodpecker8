@@ -94,14 +94,14 @@ namespace Cobra.Woodpecker8
                         if (isOPBank2Empty() == true)
                         {
                             offset = 0;
-                            msg.gm.message = "Reading bank1.";
-                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                            //msg.gm.message = "Reading bank1.";
+                            //msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                         }
                         else
                         {
                             offset = 4;
-                            msg.gm.message = "Reading bank2.";
-                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                            //msg.gm.message = "Reading bank2.";
+                            //msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                         }
                         foreach (byte badd in OpReglist)
                         {
@@ -171,14 +171,14 @@ namespace Cobra.Woodpecker8
                         if (isOPBank2Empty() == true)
                         {
                             offset = 0;
-                            msg.gm.message = "Reading bank1.";
-                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                            //msg.gm.message = "Reading bank1.";
+                            //msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                         }
                         else
                         {
                             offset = 4;
-                            msg.gm.message = "Reading bank2.";
-                            msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
+                            //msg.gm.message = "Reading bank2.";
+                            //msg.controlreq = COMMON_CONTROL.COMMON_CONTROL_WARNING;
                         }
                         foreach (byte badd in OpReglist)
                         {
