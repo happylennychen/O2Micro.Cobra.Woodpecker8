@@ -49,7 +49,7 @@ namespace Cobra.Woodpecker8
             }
             return ret;
         }
-        protected UInt32 PowerOff()
+        public UInt32 PowerOff()
         {
             UInt32 ret = 0;
             lock (m_lock)

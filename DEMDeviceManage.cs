@@ -35,7 +35,6 @@ namespace Cobra.Woodpecker8
         internal COBRA_HWMode_Reg[] m_OpRegImg = new COBRA_HWMode_Reg[ElementDefine.OP_MEMORY_SIZE];
         private Dictionary<UInt32, COBRA_HWMode_Reg[]> m_HwMode_RegList = new Dictionary<UInt32, COBRA_HWMode_Reg[]>();
 
-
         private DEMBehaviorManageBase m_dem_bm_base = new DEMBehaviorManageBase();
         private EFUSEConfigDEMBehaviorManage m_efuse_config_dem_bm = new EFUSEConfigDEMBehaviorManage();
         private RegisterConfigDEMBehaviorManage m_register_config_dem_bm = new RegisterConfigDEMBehaviorManage();
@@ -137,6 +136,7 @@ namespace Cobra.Woodpecker8
             LibErrorCode.UpdateDynamicalLibError(ref m_dynamicErrorLib_dic);
 
         }
+
         public bool EnumerateInterface()
         {
             return m_Interface.FindDevices(ref m_busoption);
@@ -211,6 +211,8 @@ namespace Cobra.Woodpecker8
                 case ElementDefine.COMMAND.MP_READ_BACK_CHECK_PC:
                     {
                         ret = m_mass_production_dem_bm.Command(ref bgworker);
+                        if (ret != LibErrorCode.IDS_ERR_SUCCESSFUL)
+                            m_mass_production_dem_bm.PowerOff();
                         break;
                     }
             }
