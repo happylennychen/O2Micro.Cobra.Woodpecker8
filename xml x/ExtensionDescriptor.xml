@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Root usage="ExtensionDescriptor" chip="OZ8978" chiptype="5708" bustype ="I2C" libname ="Cobra.OZ8978" ProjectCode="OCEWDP8X" AppVersion="2.00.03" AMTEnable = "false" OCEVersion="1.0.9.0">
+<Root usage="ExtensionDescriptor" chip="OZ8978" chiptype="5708" bustype ="I2C" libname ="Cobra.OZ8978" ProjectCode="OCEWDP8X" AppVersion="2.00.03" OCEVersion="1.0.9.0"  OCEName="OZ8978_A3_X_20220222">
   <Part Name="DBConfig">
     <ChipName>Woodpecker8</ChipName>
-    <ChipVersion>A0</ChipVersion>
+    <ChipVersion>A3</ChipVersion>
     <UserType>X</UserType>
-    <Date>20211026</Date>
+    <Date>202120222</Date>
     <HasCom>true</HasCom>
     <HasAMT>true</HasAMT>
   </Part>

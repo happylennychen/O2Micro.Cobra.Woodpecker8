@@ -142,7 +142,9 @@ namespace Cobra.Woodpecker8
             REGISTER_CONFIG_READ = 22,
             REGISTER_CONFIG_WRITE = 23,
             EFUSE_CONFIG_READ = 24,
-            EFUSE_CONFIG_WRITE = 25
+            EFUSE_CONFIG_WRITE = 25,
+            EXPERT_PROGRAM_MODE = 26,
+            EXPERT_NORMAL_MODE = 27
         }
 
     }

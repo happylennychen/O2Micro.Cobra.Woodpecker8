@@ -16,6 +16,12 @@ namespace Cobra.Woodpecker8
 
             switch ((ElementDefine.COMMAND)msg.sub_task)
             {
+                case ElementDefine.COMMAND.EXPERT_PROGRAM_MODE:
+                    ret = SetWorkMode(ElementDefine.WORK_MODE.PROGRAM);
+                    break;
+                case ElementDefine.COMMAND.EXPERT_NORMAL_MODE:
+                    ret = SetWorkMode(ElementDefine.WORK_MODE.NORMAL);
+                    break;
                 default:
 
                     break;

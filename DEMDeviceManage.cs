@@ -215,6 +215,12 @@ namespace Cobra.Woodpecker8
                             m_mass_production_dem_bm.PowerOff();
                         break;
                     }
+                case ElementDefine.COMMAND.EXPERT_NORMAL_MODE:
+                case ElementDefine.COMMAND.EXPERT_PROGRAM_MODE:
+                    {
+                        ret = m_expert_dem_bm.Command(ref bgworker);
+                        break;
+                    }
             }
             return ret;
         }
